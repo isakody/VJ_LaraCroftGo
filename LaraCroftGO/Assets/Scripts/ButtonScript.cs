@@ -39,4 +39,8 @@ public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         isOver = false;
     }
 
+    public void ResetColor()
+    {
+        isOver = false;
+    }
 }
