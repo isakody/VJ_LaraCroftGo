@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaraCroftGO", "Assembly-CSharp.csproj", "{F6F17992-6F36-E928-D090-63E0FB496CAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaraCroftGO", "Assembly-CSharp-Editor.csproj", "{36A2A69E-6354-EA22-7460-940B33BFD9AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{F6F17992-6F36-E928-D090-63E0FB496CAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6F17992-6F36-E928-D090-63E0FB496CAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6F17992-6F36-E928-D090-63E0FB496CAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36A2A69E-6354-EA22-7460-940B33BFD9AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36A2A69E-6354-EA22-7460-940B33BFD9AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36A2A69E-6354-EA22-7460-940B33BFD9AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36A2A69E-6354-EA22-7460-940B33BFD9AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
