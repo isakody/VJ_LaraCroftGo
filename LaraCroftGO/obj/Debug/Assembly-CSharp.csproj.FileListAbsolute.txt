@@ -42,3 +42,4 @@ C:\Users\Usuario\Desktop\VJ_LaraCroftGo\LaraCroftGO\obj\Debug\Assembly-CSharp.cs
 C:\Users\Usuario\Desktop\VJ_LaraCroftGo\LaraCroftGO\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\Usuario\Desktop\VJ_LaraCroftGo\LaraCroftGO\obj\Debug\Assembly-CSharp.dll
 C:\Users\Usuario\Desktop\VJ_LaraCroftGo\LaraCroftGO\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Usuario\Desktop\VJ_LaraCroftGo\LaraCroftGO\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
