@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 582305330}
   - component: {fileID: 582305329}
   m_Layer: 8
-  m_Name: Plane
+  m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,7 +258,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 582305328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.001, y: 0.627, z: 2.274}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 2
   turnSpeed: 10
-  height: 0.7
+  height: 0.55
   heightPadding: 0.05
   ground:
     serializedVersion: 2

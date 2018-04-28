@@ -12,8 +12,7 @@ public class PlayerController : MonoBehaviour {
     Quaternion targetRotation;
     Transform cam;
     Animator anim;
-    bool spacePressed;
-    public float height = 0.5f;
+    public float height = 0.55f;
     public float heightPadding = 0.05f;
     public LayerMask ground;
     public float maxGroundAngle = 120;
@@ -26,7 +25,6 @@ public class PlayerController : MonoBehaviour {
     {
         cam = Camera.main.transform;
         anim = GetComponent<Animator>();
-        spacePressed = false;
     }
 
     void Update()
@@ -55,8 +53,9 @@ public class PlayerController : MonoBehaviour {
 
     private void CheckGround()
     {
-        if(Physics.Raycast(transform.position,-Vector3.up,out hitInfo, height + heightPadding, ground))
+        if (Physics.Raycast(transform.position,-Vector3.up,out hitInfo, height + heightPadding, ground))
         {
+            
             if (Vector3.Distance(transform.position, hitInfo.point) < height)
             {
                 transform.position = Vector3.Lerp(transform.position, transform.position + Vector3.up * height, 5 * Time.deltaTime);
@@ -108,7 +107,7 @@ public class PlayerController : MonoBehaviour {
     void Rotate()
     {
         targetRotation = Quaternion.Euler(0, angle, 0);
-        transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,turnSpeed*Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,turnSpeed * Time.deltaTime);
     }
 
     void Move()
