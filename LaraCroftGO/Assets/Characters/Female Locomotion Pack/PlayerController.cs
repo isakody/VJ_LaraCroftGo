@@ -4,88 +4,57 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-
-    public float velocity = 5;
-    public float turnSpeed = 10;
+    private CharacterController controller;
+    public float verticalVelocity;
+    private float gravity = Physics.gravity.y;
+    public float jumpForce = 1.0f;
+    public float movmentSpeed = 5.0f;
     Vector2 input;
+    Animator anim;
     float angle;
     Quaternion targetRotation;
     Transform cam;
-    Animator anim;
-    public float height = 0.55f;
-    public float heightPadding = 0.05f;
-    public LayerMask ground;
-    public float maxGroundAngle = 120;
-    public bool debug;
-    float groundAngle;
-    Vector3 forward;
-    RaycastHit hitInfo;
-    bool grounded;
+    public float turnSpeed = 10.0f;
+
+
     void Start()
     {
-        cam = Camera.main.transform;
+        controller = GetComponent<CharacterController>();
+        gravity = Physics.gravity.y;
         anim = GetComponent<Animator>();
+        cam = Camera.main.transform;
     }
 
     void Update()
     {
         GetInput();
         CalculateDirection();
-        CalculateForward();
-        ClaculateGroundAngle();
-        CheckGround();
-        AplyGravity();
-        if (Mathf.Abs(input.x) < 1 && Mathf.Abs(input.y) < 1) return;
+       
         Rotate();
         Move();
-        if (Input.GetKeyDown("space"))
-            anim.SetTrigger("space");
-        else anim.ResetTrigger("space");
     }
 
-    private void AplyGravity()
+    private void Move()
     {
-        if (!grounded)
+        if (controller.isGrounded)
         {
-            transform.position += Physics.gravity * Time.deltaTime;
-        }
-    }
-
-    private void CheckGround()
-    {
-        if (Physics.Raycast(transform.position,-Vector3.up,out hitInfo, height + heightPadding, ground))
-        {
-            
-            if (Vector3.Distance(transform.position, hitInfo.point) < height)
+            Vector3 moveVector = new Vector3(input.x * movmentSpeed, verticalVelocity, input.y * movmentSpeed);
+            controller.Move(moveVector * Time.deltaTime);
+            verticalVelocity = gravity * Time.deltaTime;
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                transform.position = Vector3.Lerp(transform.position, transform.position + Vector3.up * height, 5 * Time.deltaTime);
+                verticalVelocity = jumpForce;
+                Debug.Log("jump");
             }
-            grounded = true;
         }
         else
         {
-            grounded = false;
+            verticalVelocity += gravity * Time.deltaTime;
         }
-    }
 
-    private void ClaculateGroundAngle()
-    {
-        if (!grounded)
-        {
-            groundAngle = 90;
-            return;
-        }
-        groundAngle = Vector3.Angle(hitInfo.normal, transform.forward);
-    }
-
-    private void CalculateForward()
-    {
-        if (!grounded)
-        {
-            forward = transform.forward;
-            return;
-        }
-        forward = Vector3.Cross(hitInfo.normal, -transform.right);
+        if (Input.GetKeyDown("space"))
+            anim.SetTrigger("space");
+        else anim.ResetTrigger("space");
     }
 
     void GetInput()
@@ -94,27 +63,21 @@ public class PlayerController : MonoBehaviour {
         input.y = Input.GetAxis("Vertical");
         anim.SetFloat("BlendX", input.x);
         anim.SetFloat("BlendY", input.y);
-        
-    }
 
+    }
     void CalculateDirection()
     {
         angle = Mathf.Atan2(input.x, input.y);
         angle = Mathf.Rad2Deg * angle;
         angle += cam.eulerAngles.y;
     }
-    
+
     void Rotate()
     {
         targetRotation = Quaternion.Euler(0, angle, 0);
-        transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,turnSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
     }
 
-    void Move()
-    {
-        if (groundAngle >= maxGroundAngle) return;
-        transform.position += forward * velocity * Time.deltaTime;
-    }
 
 
 }
