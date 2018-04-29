@@ -15,7 +15,12 @@ public class PlayerController : MonoBehaviour {
     Quaternion targetRotation;
     Transform cam;
     public float turnSpeed = 10.0f;
-
+    bool climb;
+    bool attachedToWall = false;
+    public float distanceTowall = 0.02f;
+    RaycastHit hit;
+    bool isLerping = false;
+    Vector3 startPos, targetPos;
 
     void Start()
     {
@@ -29,17 +34,41 @@ public class PlayerController : MonoBehaviour {
     {
         GetInput();
         CalculateDirection();
-       
-        Rotate();
-        Move();
+        CheckClimb();
+        if (climb)
+        {
+            updateClimb();
+        }
+        else
+        {
+            Rotate();
+            Move();
+        }
+        
+    }
+    private void CheckClimb()
+    {
+        Vector3 origin = transform.position;
+        origin.y += 0.5f;
+        Vector3 dir = transform.forward;
+        
+        if (Physics.Raycast(origin, dir, out hit ,1))
+        {
+            climb = true;
+        }
+        else
+        {
+            climb = false;
+        }
+
     }
 
     private void Move()
     {
+        Vector3 moveVector = new Vector3(input.x * movmentSpeed, verticalVelocity, input.y * movmentSpeed);
+        controller.Move(moveVector * Time.deltaTime);
         if (controller.isGrounded)
         {
-            Vector3 moveVector = new Vector3(input.x * movmentSpeed, verticalVelocity, input.y * movmentSpeed);
-            controller.Move(moveVector * Time.deltaTime);
             verticalVelocity = gravity * Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -55,14 +84,18 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown("space"))
             anim.SetTrigger("space");
         else anim.ResetTrigger("space");
-    }
-
+ }
+        
     void GetInput()
     {
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
-        anim.SetFloat("BlendX", input.x);
-        anim.SetFloat("BlendY", input.y);
+        if (!climb)
+        {
+            anim.SetFloat("BlendX", input.x);
+            anim.SetFloat("BlendY", input.y);
+        }
+        
 
     }
     void CalculateDirection()
@@ -78,6 +111,52 @@ public class PlayerController : MonoBehaviour {
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
     }
 
+    void updateClimb()
+    {
+        if (attachedToWall)
+        {
+            moveUp();
+        }
 
+        else
+        {
+            moveToWall();
+        }
+    }
 
+    void moveToWall()
+    {
+        
+        if (!isLerping)
+        {
+            anim.SetTrigger("climbIdle");
+            targetPos = hit.point + (hit.normal * distanceTowall);
+            isLerping = true;
+        }
+        else
+        {
+            Vector3 offset = targetPos - transform.position;
+            if (offset.magnitude <= 0.1f)
+            {
+                isLerping = false;
+                attachedToWall = true;
+                return;
+            }
+
+            else
+            {
+                offset = offset.normalized * 5.0f;
+                controller.Move(offset * Time.deltaTime);
+            }
+        }
+      
+       
+    }
+
+    void moveUp()
+    {
+        anim.SetTrigger("climbUp");
+        anim.ResetTrigger("climbIdle");
+        controller.Move(new Vector3(0, 0.2f, 0));
+    }
 }

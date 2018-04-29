@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Characters\Female Locomotion Pack\CameraController.cs" />
+     <Compile Include="Assets\Characters\Female Locomotion Pack\LaraClimbController.cs" />
      <Compile Include="Assets\Characters\Female Locomotion Pack\PlayerController.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
