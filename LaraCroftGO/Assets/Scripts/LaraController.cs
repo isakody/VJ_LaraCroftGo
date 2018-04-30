@@ -123,7 +123,7 @@ public class LaraController : MonoBehaviour {
                 if (isClimbingZ)
                 {
                     destiny = transform.position;
-                    destiny.z += 0.75f;
+                    destiny.z += 0.625f;
                     destiny.y += 1;
                     t = 0;
                     isClimbingZ = false;
@@ -132,7 +132,7 @@ public class LaraController : MonoBehaviour {
                 else
                 {
                     destiny = transform.position;
-                    destiny.z += 0.25f;
+                    destiny.z += 0.375f;
                     t = 0;
                     isClimbingZ = true;
                     return true;
@@ -171,7 +171,7 @@ public class LaraController : MonoBehaviour {
                 if (isClimbingZ)
                 {
                     destiny = transform.position;
-                    destiny.z -= 0.25f;
+                    destiny.z -= 0.375f;
                     t = 0;
                     isClimbingZ = false;
                     return true;
@@ -179,7 +179,7 @@ public class LaraController : MonoBehaviour {
                 else
                 {
                     destiny = transform.position;
-                    destiny.z -= 0.75f;
+                    destiny.z -= 0.625f;
                     destiny.y -= 1;
                     t = 0;
                     isClimbingZ = true;
@@ -206,7 +206,7 @@ public class LaraController : MonoBehaviour {
                 if (isClimbingX)
                 {
                     destiny = transform.position;
-                    destiny.x -= 0.75f;
+                    destiny.x -= 0.625f;
                     destiny.y += 1.0f;
                     isClimbingX = false;
                     t = 0;
@@ -217,7 +217,7 @@ public class LaraController : MonoBehaviour {
                 else
                 {
                     destiny = transform.position;
-                    destiny.x -= 0.25f;
+                    destiny.x -= 0.375f;
                     isClimbingX = true;
                     t = 0;
                     return true;
@@ -255,7 +255,7 @@ public class LaraController : MonoBehaviour {
                 if (!isClimbingX)
                 {
                     destiny = transform.position;
-                    destiny.x += 0.75f;
+                    destiny.x += 0.625f;
                     destiny.y -= 1;
                     isClimbingX = true;
                     t = 0;
@@ -265,7 +265,7 @@ public class LaraController : MonoBehaviour {
                 else
                 {
                     destiny = transform.position;
-                    destiny.x += 0.25f;
+                    destiny.x += 0.375f;
                     isClimbingX = false;
                     t = 0;
                     return true;
