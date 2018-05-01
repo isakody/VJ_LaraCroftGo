@@ -52,8 +52,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\DetectLaraToableFloorMovment.cs" />
      <Compile Include="Assets\Scripts\FloorTile.cs" />
      <Compile Include="Assets\Scripts\LaraController.cs" />
+     <Compile Include="Assets\Scripts\ObjectToMoveTilesController.cs" />
+     <Compile Include="Assets\Scripts\SnakeController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
