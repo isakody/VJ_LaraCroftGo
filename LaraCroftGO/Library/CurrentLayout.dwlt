@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -42,10 +42,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 683, y: 492}
-  m_MaxSize: {x: 14004, y: 14042}
+  m_MinSize: {x: 683, y: 342}
+  m_MaxSize: {x: 12008, y: 8042}
   vertical: 0
-  controlID: 51
+  controlID: 120
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -115,14 +115,14 @@ MonoBehaviour:
     y: 573
     width: 1368
     height: 374
-  m_MinSize: {x: 232, y: 271}
-  m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 15}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 15}
   - {fileID: 20}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -207,10 +207,10 @@ MonoBehaviour:
     y: 0
     width: 1368
     height: 947
-  m_MinSize: {x: 406, y: 492}
-  m_MaxSize: {x: 10002, y: 14042}
+  m_MinSize: {x: 406, y: 342}
+  m_MaxSize: {x: 8006, y: 8042}
   vertical: 1
-  controlID: 52
+  controlID: 81
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 53
+  controlID: 13
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -404,18 +404,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Usuario\Desktop\VJ_LaraCroftGo\LaraCroftGO
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 0a280000
-    m_LastClickedID: 10250
+    m_SelectedIDs: b2270000
+    m_LastClickedID: 10162
     m_ExpandedIDs: 000000008827000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -562,9 +562,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 5e80faff
-    m_LastClickedID: -360354
-    m_ExpandedIDs: e2cff7ffe4cff7ff1863f8ff1a63f8ff9a76f8ff9c76f8ff543efaff563efaff5c80faff5e80faff60ebfaffd41efbffb623fbffb823fbff846dfbff866dfbfffce7fbfffee7fbff2ef0fbffd449fcff6abafcffb235ffffd08cfffff4ccffff24fbffff9cfbffff9efbffff00000000322800007a280000
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 7a30fbffea30fbff1832fbff9cfbffff9efbffff0000000044280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -646,13 +646,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.11601927, y: 0.71139956, z: -0.12083635, w: -0.68253046}
+    m_Target: {x: -0.1502731, y: 0.8462096, z: -0.4012641, w: -0.31675038}
     speed: 2
-    m_Value: {x: -0.11601932, y: 0.7113999, z: -0.12083641, w: -0.68253076}
+    m_Value: {x: -0.15027338, y: 0.84621114, z: -0.40126485, w: -0.31675097}
   m_Size:
-    m_Target: 7.307218
+    m_Target: 5.7643647
     speed: 2
-    m_Value: 7.307218
+    m_Value: 5.7643647
   m_Ortho:
     m_Target: 0
     speed: 2

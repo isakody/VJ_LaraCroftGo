@@ -513,6 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenTiles: 1
+  rotationSpeed: 0.8
   north: 1
   south: 0
   east: 0

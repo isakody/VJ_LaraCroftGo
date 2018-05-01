@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LaraController : MonoBehaviour {
     public float timeBetweenTiles = 0.5f;
+    public float rotationSpeed = 1f;
     public bool north;
     public bool south;
     public bool east;
@@ -15,9 +16,11 @@ public class LaraController : MonoBehaviour {
     public bool up;
     public bool down;
     bool moving = false;
-    bool isClimbingX = false;
-    bool isClimbingZ = false;
+    public bool isClimbingX = false;
+    public bool isClimbingZ = false;
+    bool rotating = false;
     float t;
+    Quaternion targetRotation;
     Vector3 destiny;
 	// Use this for initialization
 	void Start () {
@@ -27,31 +30,49 @@ public class LaraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKey(KeyCode.W) && !moving)
-        {
-            if(CalculateDestiny(KeyCode.W))
-                Move(); 
+        {    calculateRotation(KeyCode.W);
+            if (CalculateDestiny(KeyCode.W))
+            {
+               
+                Move();
+            }
+                
         }
 
         if (Input.GetKey(KeyCode.S) && !moving)
         {
+            calculateRotation(KeyCode.W);
             if (CalculateDestiny(KeyCode.S))
+            {
+               
                 Move();
+            }
+                
         }
 
         if (Input.GetKey(KeyCode.A) && !moving)
         {
+            calculateRotation(KeyCode.A);
             if (CalculateDestiny(KeyCode.A))
+            {
+                
                 Move();
+            }
         }
 
         if (Input.GetKey(KeyCode.D) && !moving)
         {
+            calculateRotation(KeyCode.D);
             if (CalculateDestiny(KeyCode.D))
+            {
+                
                 Move();
+            }
         }
 
             if (moving)
         {
+            
             Move();
         }
 	}
@@ -81,6 +102,16 @@ public class LaraController : MonoBehaviour {
             ResetDirections();
             moving = true;
         }
+        if (rotating)
+        {
+            Vector3 targetPostition = new Vector3(destiny.x,
+                                      this.transform.position.y,
+                                      destiny.z);
+            Quaternion rotation = Quaternion.LookRotation(targetPostition - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed * 10);
+            float diff = transform.rotation.eulerAngles.y - rotation.eulerAngles.y;
+            if (Mathf.Abs(diff) <= 0.01f) rotating = false;
+        }
         else
         {   
             if(destiny == transform.position)
@@ -93,6 +124,7 @@ public class LaraController : MonoBehaviour {
             {
                 t += Time.deltaTime / timeBetweenTiles;
                 transform.position = Vector3.Lerp(transform.position, destiny, t);
+               
             }
            
         }
@@ -295,5 +327,11 @@ public class LaraController : MonoBehaviour {
         }
         else return false;
 
+    }
+
+    void calculateRotation(KeyCode code)
+    {
+        if (isClimbingX || isClimbingZ) rotating = false;
+        else rotating = true;
     }
 }
