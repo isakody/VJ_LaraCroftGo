@@ -16,15 +16,17 @@ public class LaraController : MonoBehaviour {
     public bool up;
     public bool down;
     bool moving = false;
+    bool running = true;
     public bool isClimbingX = false;
     public bool isClimbingZ = false;
     bool rotating = false;
+    Animator anim;
     float t;
     Quaternion targetRotation;
     Vector3 destiny;
 	// Use this for initialization
 	void Start () {
-		
+        anim = gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -110,13 +112,34 @@ public class LaraController : MonoBehaviour {
             Quaternion rotation = Quaternion.LookRotation(targetPostition - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed * 10);
             float diff = transform.rotation.eulerAngles.y - rotation.eulerAngles.y;
-            if (Mathf.Abs(diff) <= 0.01f) rotating = false;
+            if (Mathf.Abs(diff) <= 0.01f)
+            {
+                rotating = false;
+                checkForAnimation();
+            }
         }
         else
-        {   
-            if(destiny == transform.position)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 1.0f))
+            {
+                if (hit.collider.tag == "Enemy")
+                {
+                    Destroy(hit.collider.gameObject);
+                    t = 0;
+
+                }
+            }
+            if (destiny == transform.position)
             {
                 Debug.Log("final Postition");
+                moving = false;
+
+            }
+            else if (Mathf.Abs(Vector3.Distance(destiny, transform.position)) <= 0.01)
+            {
+                
+                unsetAnimation();
                 moving = false;
 
             }
@@ -333,5 +356,21 @@ public class LaraController : MonoBehaviour {
     {
         if (isClimbingX || isClimbingZ) rotating = false;
         else rotating = true;
+    }
+    
+    void checkForAnimation()
+    {
+        if(!isClimbingX && !isClimbingZ)
+        {
+            anim.SetTrigger("isRunning");
+        }
+    }
+
+    void unsetAnimation()
+    {
+        if (!isClimbingX && !isClimbingZ)
+        {
+            anim.ResetTrigger("isRunning");
+        }
     }
 }
