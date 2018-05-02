@@ -1,0 +1,3 @@
+Simple helper for setting light colors based on temperature, useful for creating different moods for scenes, more realistic light behaviours and day/night cycles
+The script contains a simple algorithm that transforms a given Kelvin temperature into RGB color, it was originaly provided by Tanner Helland and I adapted it for c#
+How to use: Just select your light source and Add Component > Scritps > LightTemperature, if you don't have any light sources, go to GameObject > Light > Temperature Light, then tweak it to best fit your scene

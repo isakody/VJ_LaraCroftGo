@@ -24,9 +24,12 @@ public class FloorTile : MonoBehaviour {
 		
 	}
     void OnTriggerEnter(Collider objectColiding)
-    {
-        objectColiding.gameObject.GetComponent<LaraController>().parseInfoFloor(canGoNorth,canGoSouth, canGoEast,canGoWest);
-        objectColiding.gameObject.GetComponent<LaraController>().parseWallDirections(canGoNorthUp, canGoSouthDown, canGoEastDown, canGoWestUp, canGoUp,canGoDown);
+    {   if (objectColiding.gameObject.tag == "Lara")
+        {
+            objectColiding.gameObject.GetComponent<LaraController>().parseInfoFloor(canGoNorth, canGoSouth, canGoEast, canGoWest);
+            objectColiding.gameObject.GetComponent<LaraController>().parseWallDirections(canGoNorthUp, canGoSouthDown, canGoEastDown, canGoWestUp, canGoUp, canGoDown);
+        }
     }
+
 
 }

@@ -20,7 +20,6 @@ public class SnakeController : MonoBehaviour
     {
 
         RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.forward);
         if (!isMoving)
         {
             

@@ -51,12 +51,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\LightTemperature\LightTemperature.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\DetectLaraToableFloorMovment.cs" />
      <Compile Include="Assets\Scripts\FloorTile.cs" />
      <Compile Include="Assets\Scripts\LaraController.cs" />
+     <Compile Include="Assets\Scripts\LizardController.cs" />
      <Compile Include="Assets\Scripts\ObjectToMoveTilesController.cs" />
      <Compile Include="Assets\Scripts\SnakeController.cs" />
+     <Compile Include="Assets\Scripts\SpiderController.cs" />
+     <None Include="Assets\LaraLight.shader" />
+     <None Include="Assets\LightTemperature\Readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

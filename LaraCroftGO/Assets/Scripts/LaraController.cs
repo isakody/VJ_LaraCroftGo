@@ -20,6 +20,7 @@ public class LaraController : MonoBehaviour {
     public bool isClimbingX = false;
     public bool isClimbingZ = false;
     bool rotating = false;
+    public List<GameObject> enemies;
     Animator anim;
     float t;
     Quaternion targetRotation;
@@ -130,17 +131,13 @@ public class LaraController : MonoBehaviour {
 
                 }
             }
-            if (destiny == transform.position)
-            {
-                Debug.Log("final Postition");
-                moving = false;
-
-            }
-            else if (Mathf.Abs(Vector3.Distance(destiny, transform.position)) <= 0.01)
+            
+            if (Mathf.Abs(Vector3.Distance(destiny, transform.position)) <= 0.01)
             {
                 
                 unsetAnimation();
                 moving = false;
+                updateAllEnemies();
 
             }
             else
@@ -182,6 +179,7 @@ public class LaraController : MonoBehaviour {
                     destiny.y += 1;
                     t = 0;
                     isClimbingZ = false;
+                    updateAllEnemiesWithDirections(new Vector3(0, 1, 0.625f));
                     return true;
                 }
                 else
@@ -190,6 +188,7 @@ public class LaraController : MonoBehaviour {
                     destiny.z += 0.375f;
                     t = 0;
                     isClimbingZ = true;
+                    updateAllEnemiesWithDirections(new Vector3(0, 0, 0.375f));
                     return true;
                 }
                 
@@ -199,6 +198,7 @@ public class LaraController : MonoBehaviour {
                 destiny = transform.position;
                 destiny.y += 1;
                 t = 0;
+                updateAllEnemiesWithDirections(new Vector3(0, 1, 0));
                 return true;
             }
 
@@ -207,6 +207,7 @@ public class LaraController : MonoBehaviour {
                 destiny = transform.position;
                 destiny.z += 1;
                 t = 0;
+                updateAllEnemiesWithDirections(new Vector3(0, 0, 1));
                 return true;
             }
             else return false;
@@ -219,6 +220,7 @@ public class LaraController : MonoBehaviour {
                 destiny = transform.position;
                 destiny.z -= 1;
                 t = 0;
+                updateAllEnemiesWithDirections(new Vector3(0, 0, -1));
                 return true;
             }
             else if (southDown)
@@ -229,6 +231,7 @@ public class LaraController : MonoBehaviour {
                     destiny.z -= 0.375f;
                     t = 0;
                     isClimbingZ = false;
+                    updateAllEnemiesWithDirections(new Vector3(0, 0, -0.375f));
                     return true;
                 }
                 else
@@ -238,6 +241,7 @@ public class LaraController : MonoBehaviour {
                     destiny.y -= 1;
                     t = 0;
                     isClimbingZ = true;
+                    updateAllEnemiesWithDirections(new Vector3(0, -1, -0.625f));
                     return true;
                 }
             }
@@ -246,6 +250,7 @@ public class LaraController : MonoBehaviour {
                 destiny = transform.position;
                 destiny.y -= 1;
                 t = 0;
+                updateAllEnemiesWithDirections(new Vector3(0, -1, 0));
                 return true;
             }
             else
@@ -265,6 +270,7 @@ public class LaraController : MonoBehaviour {
                     destiny.y += 1.0f;
                     isClimbingX = false;
                     t = 0;
+                    updateAllEnemiesWithDirections(new Vector3(-0.625f, 1, 0));
                     return true;
 
 
@@ -275,6 +281,7 @@ public class LaraController : MonoBehaviour {
                     destiny.x -= 0.375f;
                     isClimbingX = true;
                     t = 0;
+                    updateAllEnemiesWithDirections(new Vector3(-0.375f, 0, 0));
                     return true;
                 }
 
@@ -284,6 +291,7 @@ public class LaraController : MonoBehaviour {
                 destiny = transform.position;
                 destiny.y += 1;
                 t = 0;
+                updateAllEnemiesWithDirections(new Vector3(0, 1, 0));
                 return true;
             }
             else if (west)
@@ -291,6 +299,7 @@ public class LaraController : MonoBehaviour {
                 destiny = transform.position;
                 destiny.x -= 1;
                 t = 0;
+                updateAllEnemiesWithDirections(new Vector3(-1, 0, 0));
                 return true;
             }
             else return false;
@@ -303,6 +312,7 @@ public class LaraController : MonoBehaviour {
                 destiny = transform.position;
                 destiny.y -= 1;
                 t = 0;
+                updateAllEnemiesWithDirections(new Vector3(0, -1, 0));
                 return true;
             }
             else if(eastDown == true)
@@ -314,6 +324,7 @@ public class LaraController : MonoBehaviour {
                     destiny.y -= 1;
                     isClimbingX = true;
                     t = 0;
+                    updateAllEnemiesWithDirections(new Vector3(0.625f, -1, 0));
                     return true;
 
                 }
@@ -323,6 +334,7 @@ public class LaraController : MonoBehaviour {
                     destiny.x += 0.375f;
                     isClimbingX = false;
                     t = 0;
+                    updateAllEnemiesWithDirections(new Vector3(0.375f, 0, 0));
                     return true;
                 }
                 
@@ -335,6 +347,7 @@ public class LaraController : MonoBehaviour {
                     destiny = transform.position;
                     destiny.x += 1;
                     t = 0;
+                    updateAllEnemiesWithDirections(new Vector3(1, 0, 0));
                     return true;
                 }
 
@@ -343,6 +356,7 @@ public class LaraController : MonoBehaviour {
                     destiny = transform.position;
                     destiny.z += 1;
                     t = 0;
+                    updateAllEnemiesWithDirections(new Vector3(0, 0, 1));
                     return true;
                 }
                 
@@ -371,6 +385,23 @@ public class LaraController : MonoBehaviour {
         if (!isClimbingX && !isClimbingZ)
         {
             anim.ResetTrigger("isRunning");
+        }
+    }
+
+    void updateAllEnemies()
+    {
+        Debug.Log("calling for enemies move");
+        for(int i = 0; i < enemies.Count; ++i)
+        {
+            enemies[i].SendMessage("EnableMovement", true);
+        }
+    }
+
+    void updateAllEnemiesWithDirections(Vector3 direction)
+    {
+        for (int i = 0; i < enemies.Count; ++i)
+        {
+            enemies[i].SendMessage("ParseLaraDirections", direction);
         }
     }
 }
