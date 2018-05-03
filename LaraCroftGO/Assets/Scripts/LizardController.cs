@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LizardController : MonoBehaviour {
-    List<Vector3> directions;
+    public List<string> directions;
     public bool canGoDown;
     public bool canGoUp;
     public bool canGoNorth;
@@ -12,29 +12,36 @@ public class LizardController : MonoBehaviour {
     public bool canGoWest;
     public bool canMove;
     public bool followingLara = false;
+    public bool hasDetectedLara = false;
     public bool isMooving = false;
     public float attackSeconds = 0.2f;
     float t;
     Vector3 targetPosition;
     // Use this for initialization
     void Start () {
-        directions = new List<Vector3>();
+        directions = new List<string>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (canMove && followingLara)
+        
+        if (canMove)
         {
             CheckForKill();
-            if (!isMooving)
+            if (hasDetectedLara) followingLara = true;
+            if (followingLara)
             {
-                CalculatePosition();
-                t = 0;
-                isMooving = true;
-            }
-            else
-            {
-                MoveToTargetPosition();
+                if (!isMooving)
+                {
+                    CalculatePosition();
+                    t = 0;
+                    isMooving = true;
+                    transform.LookAt(new Vector3(targetPosition.x, transform.position.y, targetPosition.z));
+                }
+                else
+                {
+                    MoveToTargetPosition();
+                }
             }
         }
 	}
@@ -65,14 +72,20 @@ public class LizardController : MonoBehaviour {
                 }
             }
         }
-       
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 3.0f))
+        if (!hasDetectedLara)
         {
-            if (hit.collider.tag == "Lara")
+
+            Debug.DrawRay(transform.position, transform.forward * 3, Color.red);
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 3.0f))
             {
-                directions.Add(transform.forward);
-                directions.Add(transform.forward);
-                followingLara = true;
+                if (hit.collider.tag == "Lara")
+                {
+                    directions.Add("Forward");
+                    directions.Add("Forward");
+                    directions.Add("Forward");
+                    hasDetectedLara = true;
+                    canMove = false;
+                }
             }
         }
     }
@@ -82,7 +95,7 @@ public class LizardController : MonoBehaviour {
         this.canMove = canMove;
     }
 
-    void ParseLaraDirections(Vector3 direction)
+    void ParseLaraDirections(string direction)
     {
         if(followingLara)
             directions.Add(direction);
@@ -111,12 +124,30 @@ public class LizardController : MonoBehaviour {
     {
         if (directions.Count > 0)
         {
-            Vector3 movment = directions[0];
+            if (directions[0] == "Forward")
+            {
+                targetPosition = transform.position + transform.forward;
+            }
+            else if (directions[0] == "North" && canGoNorth)
+            {
+                targetPosition = transform.position + Vector3.forward;
+            }
+            else if (directions[0] == "South" && canGoSouth)
+            {
+                targetPosition = transform.position + Vector3.back;
+            }
+            else if (directions[0] == "East" && canGoEast)
+            {
+                targetPosition = transform.position + Vector3.right;
+            }
+            else if (directions[0] == "West" && canGoWest)
+            {
+                targetPosition = transform.position + Vector3.left;
+            }
+            else followingLara = false;
             directions.RemoveAt(0);
-            targetPosition = transform.position += movment;
-            
         }
-        else targetPosition = transform.position;
+        else followingLara = false;
         
     }
 }

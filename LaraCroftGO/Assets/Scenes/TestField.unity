@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 921486488}
-  offsetPos: {x: 2, y: 2, z: -2}
+  offsetPos: {x: 5, y: 5, z: -5}
   moveSpeed: 5
   turnSpeed: 5
   smoothSpeed: 0.5
@@ -567,6 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0518cd27e7c4a834a9685a6452500521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directions: []
   canGoDown: 0
   canGoUp: 0
   canGoNorth: 0
@@ -575,8 +576,9 @@ MonoBehaviour:
   canGoWest: 0
   canMove: 0
   followingLara: 0
+  hasDetectedLara: 0
   isMooving: 0
-  attackSeconds: 0.9
+  attackSeconds: 0.2
 --- !u!23 &1236781625
 MeshRenderer:
   m_ObjectHideFlags: 0
