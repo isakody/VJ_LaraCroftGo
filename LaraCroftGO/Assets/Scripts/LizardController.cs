@@ -11,10 +11,17 @@ public class LizardController : MonoBehaviour {
     public bool canGoEast;
     public bool canGoWest;
     public bool canMove;
+    public bool canGoNorthUp;
+    public bool canGoWestUp;
+    public bool canGoEastDown;
+    public bool canGoSouthDown;
     public bool followingLara = false;
     public bool hasDetectedLara = false;
     public bool isMooving = false;
     public float attackSeconds = 0.2f;
+    bool isClimbingX;
+    bool isClimbingZ;
+    public float boxSize = 0.25f;
     float t;
     Vector3 targetPosition;
     // Use this for initialization
@@ -143,6 +150,63 @@ public class LizardController : MonoBehaviour {
             else if (directions[0] == "West" && canGoWest)
             {
                 targetPosition = transform.position + Vector3.left;
+            }
+            else if(directions[0] == "NorthUp" && canGoSouthDown)
+            {
+                if (isClimbingZ)
+                {
+                    //adRotation and movment depending on the character box
+                    targetPosition = transform.position;
+                    
+                    isClimbingZ = false;
+                    
+                }
+                else
+                {
+                    //adRotation and movment depending on the character box
+                    isClimbingZ = true;
+                }
+            }
+            else if(directions[0] == "EastDown" && canGoEastDown)
+            {
+                if (isClimbingX)
+                {
+                    //adRotation and movment depending on the character box
+                    isClimbingX = false;
+                }
+                else
+                {
+                    //adRotation and movment depending on the character box
+                    isClimbingZ = true;
+                }
+
+            }
+            else if(directions[0] == "NorthUP" && canGoNorthUp)
+            {
+                if (isClimbingZ)
+                {
+                    //adRotation and movment depending on the character box
+                    isClimbingZ = false;
+                }
+                else
+                {
+                    //adRotation and movment depending on the character box
+                    isClimbingZ = true;
+                }
+            }
+            else if(directions[0] == "WestUp" && canGoWestUp)
+            {
+                if (isClimbingX)
+                {
+                    //adRotation and movment depending on the character box
+                    isClimbingX = false;
+                }
+                else
+                {
+                    //adRotation and movment depending on the character box
+                    isClimbingX = true;
+                }
+
             }
             else followingLara = false;
             directions.RemoveAt(0);

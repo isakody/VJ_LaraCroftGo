@@ -16,7 +16,6 @@ public class LaraController : MonoBehaviour {
     public bool up;
     public bool down;
     bool moving = false;
-    bool running = true;
     public bool isClimbingX = false;
     public bool isClimbingZ = false;
     bool rotating = false;

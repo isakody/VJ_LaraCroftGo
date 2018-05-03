@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour {
     Vector3 targetPos;
 
     
-    bool smoothRotating = false;
+
 	// Use this for initialization
 	void Start () {
         
@@ -47,7 +47,6 @@ public class CameraController : MonoBehaviour {
         Vector3 vel = Vector3.zero;
         Vector3 targetOffsetPos = Quaternion.Euler(0, angle, 0) * offsetPos;
         float distance = Vector3.Distance(offsetPos, targetOffsetPos);
-        smoothRotating = true;
         while(distance > 0.02f)
         {
 
@@ -55,7 +54,6 @@ public class CameraController : MonoBehaviour {
             distance = Vector3.Distance(offsetPos, targetOffsetPos);
             yield return null;
         }
-        smoothRotating = false;
         offsetPos = targetOffsetPos;
     }
 }
