@@ -61,6 +61,10 @@ public class LizardController : MonoBehaviour {
         canGoSouth = objectColiding.gameObject.GetComponent<FloorTile>().canGoSouth;
         canGoEast = objectColiding.gameObject.GetComponent<FloorTile>().canGoEast;
         canGoWest = objectColiding.gameObject.GetComponent<FloorTile>().canGoWest;
+        canGoNorthUp = objectColiding.gameObject.GetComponent<FloorTile>().canGoNorthUp;
+        canGoWestUp = objectColiding.gameObject.GetComponent<FloorTile>().canGoWestUp;
+        canGoSouthDown = objectColiding.gameObject.GetComponent<FloorTile>().canGoSouthDown;
+        canGoEastDown = objectColiding.gameObject.GetComponent<FloorTile>().canGoEastDown;
     }
 
     void CheckForKill()
@@ -87,6 +91,8 @@ public class LizardController : MonoBehaviour {
             {
                 if (hit.collider.tag == "Lara")
                 {
+                    if (isClimbingX && hit.collider.GetComponent<LaraController>().isClimbingX ||
+                        isClimbingZ && hit.collider.GetComponent<LaraController>().isClimbingZ) return;
                     directions.Add("Forward");
                     directions.Add("Forward");
                     directions.Add("Forward");
@@ -151,64 +157,83 @@ public class LizardController : MonoBehaviour {
             {
                 targetPosition = transform.position + Vector3.left;
             }
-            else if(directions[0] == "NorthUp" && canGoSouthDown)
+            else if (directions[0] == "NorthUp" && canGoNorthUp)
             {
                 if (isClimbingZ)
                 {
                     //adRotation and movment depending on the character box
                     targetPosition = transform.position;
-                    
+                    targetPosition.y += 1;
+                    targetPosition.z += 0.5f + (boxSize / 2);
                     isClimbingZ = false;
-                    
-                }
-                else
-                {
-                    //adRotation and movment depending on the character box
-                    isClimbingZ = true;
-                }
-            }
-            else if(directions[0] == "EastDown" && canGoEastDown)
-            {
-                if (isClimbingX)
-                {
-                    //adRotation and movment depending on the character box
-                    isClimbingX = false;
-                }
-                else
-                {
-                    //adRotation and movment depending on the character box
-                    isClimbingZ = true;
-                }
 
-            }
-            else if(directions[0] == "NorthUP" && canGoNorthUp)
-            {
-                if (isClimbingZ)
-                {
-                    //adRotation and movment depending on the character box
-                    isClimbingZ = false;
                 }
                 else
                 {
                     //adRotation and movment depending on the character box
+                    targetPosition = transform.position;
+                    targetPosition.z += 0.5f - (boxSize / 2);
                     isClimbingZ = true;
                 }
             }
-            else if(directions[0] == "WestUp" && canGoWestUp)
+            else if (directions[0] == "EastDown" && canGoEastDown)
             {
                 if (isClimbingX)
                 {
-                    //adRotation and movment depending on the character box
+                    targetPosition = transform.position;
+                    
+                    targetPosition.x += 0.5f - (boxSize / 2);
                     isClimbingX = false;
                 }
                 else
                 {
-                    //adRotation and movment depending on the character box
+                    targetPosition = transform.position;
+                    targetPosition.y -= 1;
+                    targetPosition.z += 0.5f + (boxSize / 2);
                     isClimbingX = true;
                 }
 
             }
-            else followingLara = false;
+            else if (directions[0] == "WestUp" && canGoWestUp)
+            {
+                if (isClimbingX)
+                {
+                    targetPosition = transform.position;
+                    targetPosition.y += 1;
+                    targetPosition.x -= 0.5f + (boxSize / 2);
+                    isClimbingX = false;
+                }
+                else
+                {
+                    targetPosition = transform.position;
+                    targetPosition.x -= 0.5f - (boxSize / 2);
+                    isClimbingX = true;
+                }
+            }
+            else if (directions[0] == "SouthDown" && canGoSouthDown)
+            {
+                if (isClimbingZ)
+                {
+                    targetPosition = transform.position;
+                    targetPosition.z -= 0.5f - (boxSize / 2);
+                    isClimbingZ = false;
+                }
+                else
+                {
+                    targetPosition = transform.position;
+                    targetPosition.y -= 1;
+                    targetPosition.z -= 0.5f + (boxSize / 2);
+                    isClimbingZ = true;
+                }
+
+            }
+            else
+            {
+                followingLara = false;
+                hasDetectedLara = false;
+                directions.Clear();
+                return;
+            }
             directions.RemoveAt(0);
         }
         else followingLara = false;
