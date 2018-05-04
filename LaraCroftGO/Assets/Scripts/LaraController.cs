@@ -392,7 +392,8 @@ public class LaraController : MonoBehaviour {
         Debug.Log("calling for enemies move");
         for(int i = 0; i < enemies.Count; ++i)
         {
-            enemies[i].SendMessage("EnableMovement", true);
+            if(enemies[i] != null)
+                enemies[i].SendMessage("EnableMovement", true);
         }
     }
 
@@ -400,7 +401,8 @@ public class LaraController : MonoBehaviour {
     {
         for (int i = 0; i < enemies.Count; ++i)
         {
-            enemies[i].SendMessage("ParseLaraDirections", direction);
+            if (enemies[i] != null)
+                enemies[i].SendMessage("ParseLaraDirections", direction);
         }
     }
 }

@@ -86,7 +86,6 @@ public class LizardController : MonoBehaviour {
         if (!hasDetectedLara)
         {
 
-            Debug.DrawRay(transform.position, transform.forward * 3, Color.red);
             if (Physics.Raycast(transform.position, transform.forward, out hit, 3.0f))
             {
                 if (hit.collider.tag == "Lara")

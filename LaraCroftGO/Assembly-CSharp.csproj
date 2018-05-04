@@ -58,8 +58,10 @@
      <Compile Include="Assets\Scripts\LaraController.cs" />
      <Compile Include="Assets\Scripts\LizardController.cs" />
      <Compile Include="Assets\Scripts\ObjectToMoveTilesController.cs" />
+     <Compile Include="Assets\Scripts\PlateController.cs" />
      <Compile Include="Assets\Scripts\SnakeController.cs" />
      <Compile Include="Assets\Scripts\SpiderController.cs" />
+     <Compile Include="Assets\Scripts\SpikeController.cs" />
      <None Include="Assets\LaraLight.shader" />
      <None Include="Assets\LightTemperature\Readme.txt" />
  <Reference Include="UnityEngine.UI">
