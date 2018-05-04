@@ -52,11 +52,14 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\LightTemperature\LightTemperature.cs" />
+     <Compile Include="Assets\Scripts\ButtonScript.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\DetectLaraToableFloorMovment.cs" />
      <Compile Include="Assets\Scripts\FloorTile.cs" />
      <Compile Include="Assets\Scripts\LaraController.cs" />
      <Compile Include="Assets\Scripts\LizardController.cs" />
+     <Compile Include="Assets\Scripts\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\MenuSound.cs" />
      <Compile Include="Assets\Scripts\ObjectToMoveTilesController.cs" />
      <Compile Include="Assets\Scripts\PlateController.cs" />
      <Compile Include="Assets\Scripts\SnakeController.cs" />
