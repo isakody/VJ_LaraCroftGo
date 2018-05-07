@@ -1,4 +1,4 @@
 sceneSetups:
-- path: C:/Users/Usuario/Desktop/LaraCroftGO/Assets/Scenes/Menu.unity
+- path: Assets/Scenes/TestField.unity
   isLoaded: 1
   isActive: 1
