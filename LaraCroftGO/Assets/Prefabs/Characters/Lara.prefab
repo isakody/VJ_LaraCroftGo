@@ -867,6 +867,7 @@ MonoBehaviour:
   down: 0
   isClimbingX: 0
   isClimbingZ: 0
+  enemies: []
 --- !u!137 &137519840619841180
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
