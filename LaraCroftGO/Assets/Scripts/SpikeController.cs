@@ -17,6 +17,7 @@ public class SpikeController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        transform.Rotate(Vector3.up * Time.deltaTime*40);
         if (isMooving) MoveToTargetPosition();
 	}
     void activation(bool activated)
