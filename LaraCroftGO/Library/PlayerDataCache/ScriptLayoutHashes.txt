@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/borja/Desktop/VJ_LaraCroftGo/LaraCroftGO/lara.exe
+C:/Users/Usuario/Desktop/VJ_LaraCroftGo/LaraCroftGO/laea.exe
 SceneListBegin?
 Assets/Scenes/Menu.unity
 Assets/Scenes/Map1.unity
@@ -162,3 +162,4 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 6ec97c9e3e9c0310e7a158ac14cc8e0e Assembly-CSharp.dll:.PlateController
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MapController
