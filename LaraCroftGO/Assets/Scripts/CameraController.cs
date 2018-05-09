@@ -39,21 +39,6 @@ public class CameraController : MonoBehaviour {
     void LookAtTarget()
     {
         targetRotation = Quaternion.LookRotation(target.position - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
-    }
-
-    IEnumerator RotateArowndTarget(float angle)
-    {
-        Vector3 vel = Vector3.zero;
-        Vector3 targetOffsetPos = Quaternion.Euler(0, angle, 0) * offsetPos;
-        float distance = Vector3.Distance(offsetPos, targetOffsetPos);
-        while(distance > 0.02f)
-        {
-
-            offsetPos = Vector3.SmoothDamp(offsetPos, targetOffsetPos, ref vel, smoothSpeed);
-            distance = Vector3.Distance(offsetPos, targetOffsetPos);
-            yield return null;
-        }
-        offsetPos = targetOffsetPos;
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
     }
 }

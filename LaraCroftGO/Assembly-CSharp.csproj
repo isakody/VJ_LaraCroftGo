@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\LaraController.cs" />
      <Compile Include="Assets\Scripts\LizardController.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\MapController.cs" />
      <Compile Include="Assets\Scripts\MenuSound.cs" />
      <Compile Include="Assets\Scripts\ObjectToMoveTilesController.cs" />
      <Compile Include="Assets\Scripts\PlateController.cs" />

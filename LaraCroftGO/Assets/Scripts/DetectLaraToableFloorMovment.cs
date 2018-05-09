@@ -11,10 +11,10 @@ public class DetectLaraToableFloorMovment : MonoBehaviour {
     void OnTriggerEnter(Collider objectColiding)
     {
         Debug.Log("entering Colision");
-        transform.parent.gameObject.GetComponent<ObjectToMoveTilesController>().canMoveFloor(true);
+        transform.parent.parent.gameObject.GetComponent<ObjectToMoveTilesController>().canMoveFloor(true);
     }
     void OnTriggerExit(Collider objectColiding)
     {
-        transform.parent.gameObject.GetComponent<ObjectToMoveTilesController>().canMoveFloor(false);
+        transform.parent.parent.gameObject.GetComponent<ObjectToMoveTilesController>().canMoveFloor(false);
     }
 }

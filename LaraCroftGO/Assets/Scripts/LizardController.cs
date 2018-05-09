@@ -23,15 +23,17 @@ public class LizardController : MonoBehaviour {
     bool isClimbingZ;
     public float boxSize = 0.25f;
     float t;
+    Animator anim;
     Vector3 targetPosition;
     // Use this for initialization
     void Start () {
         directions = new List<string>();
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        
+        Debug.DrawRay(transform.position+Vector3.up*0.5f, transform.forward * 3, Color.red);
         if (canMove)
         {
             CheckForKill();
@@ -47,6 +49,7 @@ public class LizardController : MonoBehaviour {
                 }
                 else
                 {
+                    anim.SetTrigger("isRunning");
                     MoveToTargetPosition();
                 }
             }
@@ -71,22 +74,20 @@ public class LizardController : MonoBehaviour {
     {
 
         RaycastHit hit;
-        if (followingLara)
+        if (Physics.Raycast(transform.position + Vector3.up * 0.5f, transform.forward, out hit, 1.0f))
         {
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 1.0f))
+            if (hit.collider.tag == "Lara")
             {
-                if (hit.collider.tag == "Lara")
-                {
-                    targetPosition = transform.position;
-                    targetPosition += transform.forward;
-                    Destroy(hit.collider.gameObject);
-                }
+                targetPosition = transform.position;
+                targetPosition += transform.forward;
+                Destroy(hit.collider.gameObject);
             }
         }
+        
         if (!hasDetectedLara)
         {
 
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 3.0f))
+            if (Physics.Raycast(transform.position+Vector3.up*0.5f, transform.forward, out hit, 3.0f))
             {
                 if (hit.collider.tag == "Lara")
                 {
@@ -115,17 +116,18 @@ public class LizardController : MonoBehaviour {
 
     void MoveToTargetPosition()
     {
-        if (targetPosition == transform.position)
+        if (Mathf.Abs(Vector3.Distance(targetPosition, transform.position)) <= 0.01f)
         {
             Debug.Log("final Postition");
             canMove = false;
             isMooving = false;
-            transform.LookAt(new Vector3(targetPosition.x, transform.position.y, targetPosition.z));
+            anim.ResetTrigger("isRunning");
             Debug.Log(new Vector3(targetPosition.x, transform.position.y, targetPosition.z));
 
         }
         else
         {
+            transform.LookAt(new Vector3(targetPosition.x, transform.position.y, targetPosition.z));
             t += Time.deltaTime / attackSeconds;
             transform.position = Vector3.Lerp(transform.position, targetPosition, t);
 
