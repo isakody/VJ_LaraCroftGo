@@ -2549,9 +2549,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1966924166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25e1aa81e31bbfa458d18a8dc0b3c0be, type: 3}
+  m_Script: {fileID: 11500000, guid: ae4599b99bc66c14b9a47af0fd8f67ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 1966924169}
+  isOver: 0
+  startColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &1966924169
 MonoBehaviour:
   m_ObjectHideFlags: 0

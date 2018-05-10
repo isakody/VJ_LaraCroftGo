@@ -24,8 +24,12 @@ public class LaraController : MonoBehaviour {
     float t;
     Quaternion targetRotation;
     Vector3 destiny;
-	// Use this for initialization
-	void Start () {
+    private bool isKilling;
+    private GameObject enemyToKill;
+    float timePassed = 0;
+
+    // Use this for initialization
+    void Start () {
         anim = gameObject.GetComponent<Animator>();
 	}
 	
@@ -99,6 +103,8 @@ public class LaraController : MonoBehaviour {
 
     void Move()
     {
+       
+        
         if (!moving)
         {
             ResetDirections();
@@ -120,17 +126,19 @@ public class LaraController : MonoBehaviour {
         }
         else
         {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 1.0f))
+            if(isKilling) timePassed += Time.deltaTime;
+            if(isKilling && timePassed > 1f)
             {
-                if (hit.collider.tag == "Enemy")
-                {
-                    Destroy(hit.collider.gameObject);
-                    t = 0;
-
-                }
+                unsetAnimation();
+                anim.SetTrigger("isRunning");
+                timePassed = 0;
+                Destroy(enemyToKill);
+                
+               
+                
             }
-            
+
+
             if (Mathf.Abs(Vector3.Distance(destiny, transform.position)) <= 0.01)
             {
                 
@@ -141,8 +149,11 @@ public class LaraController : MonoBehaviour {
             }
             else
             {
-                t += Time.deltaTime / timeBetweenTiles;
-                transform.position = Vector3.Lerp(transform.position, destiny, t);
+                if (!isKilling)
+                {
+                    t += Time.deltaTime / timeBetweenTiles;
+                    transform.position = Vector3.Lerp(transform.position, destiny, t);
+                }
                
             }
            
@@ -373,9 +384,25 @@ public class LaraController : MonoBehaviour {
     
     void checkForAnimation()
     {
+        
         if(!isClimbingX && !isClimbingZ)
         {
-            anim.SetTrigger("isRunning");
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 1.0f))
+            {
+                Debug.Log(hit.collider.tag);
+                if (hit.collider.tag == "Enemy")
+                {
+                    anim.SetTrigger("isKilling");
+                    enemyToKill = hit.collider.gameObject;
+                    isKilling = true;
+                    t = 0;
+                    timePassed = 0;
+
+                }
+                else anim.SetTrigger("isRunning");
+            }
+            else anim.SetTrigger("isRunning");
         }
     }
 
@@ -384,6 +411,8 @@ public class LaraController : MonoBehaviour {
         if (!isClimbingX && !isClimbingZ)
         {
             anim.ResetTrigger("isRunning");
+            anim.ResetTrigger("isKilling");
+            isKilling = false;
         }
     }
 
