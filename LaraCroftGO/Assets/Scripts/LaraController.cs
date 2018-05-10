@@ -35,6 +35,7 @@ public class LaraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.DrawRay(transform.position + Vector3.up * 0.5f, transform.forward, Color.yellow);
         if (Input.GetKey(KeyCode.W) && !moving)
         {    calculateRotation(KeyCode.W);
             if (CalculateDestiny(KeyCode.W))
@@ -388,7 +389,7 @@ public class LaraController : MonoBehaviour {
         if(!isClimbingX && !isClimbingZ)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 1.0f))
+            if (Physics.Raycast(transform.position + Vector3.up*0.5f, transform.forward, out hit, 1.0f))
             {
                 Debug.Log(hit.collider.tag);
                 if (hit.collider.tag == "Enemy")
