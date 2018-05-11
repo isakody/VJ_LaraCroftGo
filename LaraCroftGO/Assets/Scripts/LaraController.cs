@@ -128,12 +128,15 @@ public class LaraController : MonoBehaviour {
         else
         {
             if(isKilling) timePassed += Time.deltaTime;
-            if(isKilling && timePassed > 1f)
+            if(isKilling && timePassed > 1.1f)
             {
-                unsetAnimation();
-                anim.SetTrigger("isRunning");
-                timePassed = 0;
-                Destroy(enemyToKill);
+                if (timePassed > 2.1f)
+                {
+                    unsetAnimation();
+                    anim.SetTrigger("isRunning");
+                    timePassed = 0;
+                }
+               if(enemyToKill != null) Destroy(enemyToKill);
                 
                
                 
