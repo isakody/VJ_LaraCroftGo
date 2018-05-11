@@ -289,10 +289,55 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Aura\Editor\Drawers\ColorCircularPickerDrawer.cs" />
+    <Compile Include="Assets\Aura\Editor\Drawers\Texture3DPreviewDrawer.cs" />
+    <Compile Include="Assets\Aura\Editor\Editors\AuraEditor.cs" />
+    <Compile Include="Assets\Aura\Editor\Editors\AuraLightEditor.cs" />
+    <Compile Include="Assets\Aura\Editor\Editors\AuraVolumeEditor.cs" />
+    <Compile Include="Assets\Aura\Editor\Editors\CreateTexture3DAssetTool.cs" />
+    <Compile Include="Assets\Aura\Editor\Editors\Texture3DEditor.cs" />
+    <Compile Include="Assets\Aura\Editor\Enums\Texture3DReadingOrderEnum.cs" />
+    <Compile Include="Assets\Aura\Editor\Extensions\Texture3DExtensions.cs" />
+    <Compile Include="Assets\Aura\Editor\Helpers\GuiHelpers.cs" />
+    <Compile Include="Assets\Aura\Editor\Helpers\MeshHelpers.cs" />
+    <Compile Include="Assets\Aura\Editor\Helpers\PreviewRenderUtilityHelpers.cs" />
+    <Compile Include="Assets\Aura\Editor\Statics\GuiStyles.cs" />
     <Compile Include="Assets\LightTemperature\Editor\LightTemperatureEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\LaraLight.shader" />
+    <None Include="Assets\Aura\Editor\Shaders\ColorFieldDrawerShader.shader" />
+    <None Include="Assets\Aura\Editor\Shaders\Texture3DPreviewShader.shader" />
+    <None Include="Assets\Aura\Examples\Sponza\Fireball\FireballBlendAdd.shader" />
+    <None Include="Assets\Aura\License\license.txt" />
+    <None Include="Assets\Aura\Shaders\Aura.cginc" />
+    <None Include="Assets\Aura\Shaders\ComputeShaders\ComputeAccumulationComputeShader.compute" />
+    <None Include="Assets\Aura\Shaders\ComputeShaders\ComputeDataComputeShader.compute" />
+    <None Include="Assets\Aura\Shaders\ComputeShaders\ComputeMaximumDepthComputeShader.compute" />
+    <None Include="Assets\Aura\Shaders\ComputeShaders\Includes\DirectionalLightInjection.cginc" />
+    <None Include="Assets\Aura\Shaders\ComputeShaders\Includes\OcclusionCulling.cginc" />
+    <None Include="Assets\Aura\Shaders\ComputeShaders\Includes\PointLightInjection.cginc" />
+    <None Include="Assets\Aura\Shaders\ComputeShaders\Includes\SpotLightInjection.cginc" />
+    <None Include="Assets\Aura\Shaders\ComputeShaders\Includes\TemporalReprojection.cginc" />
+    <None Include="Assets\Aura\Shaders\ComputeShaders\Includes\VolumeInjection.cginc" />
+    <None Include="Assets\Aura\Shaders\Includes\AuraParticlesBase.cginc" />
+    <None Include="Assets\Aura\Shaders\Includes\AuraParticlesUsage.cginc" />
+    <None Include="Assets\Aura\Shaders\Includes\AuraUsage.cginc" />
+    <None Include="Assets\Aura\Shaders\Includes\BlueNoise.cginc" />
+    <None Include="Assets\Aura\Shaders\Includes\Common.cginc" />
+    <None Include="Assets\Aura\Shaders\Includes\CommonFunctions.cginc" />
+    <None Include="Assets\Aura\Shaders\Includes\CommonVariables.cginc" />
+    <None Include="Assets\Aura\Shaders\Includes\Noise.cginc" />
+    <None Include="Assets\Aura\Shaders\Includes\Structs.cginc" />
+    <None Include="Assets\Aura\Shaders\Shaders\Particles\AuraParticlesAdditive.shader" />
+    <None Include="Assets\Aura\Shaders\Shaders\Particles\AuraParticlesAlphaBlend.shader" />
+    <None Include="Assets\Aura\Shaders\Shaders\Particles\AuraParticlesBlendAdd.shader" />
+    <None Include="Assets\Aura\Shaders\Shaders\PostProcessShader.shader" />
+    <None Include="Assets\Aura\Shaders\Shaders\ProcessOcclusionTextureShader.shader" />
+    <None Include="Assets\Aura\Shaders\Shaders\StoreDirectionalSpotLightCookieMap.shader" />
+    <None Include="Assets\Aura\Shaders\Shaders\StorePointLightCookieMap.shader" />
+    <None Include="Assets\Aura\Shaders\Shaders\StorePointLightShadowMap.shader" />
+    <None Include="Assets\Aura\Shaders\Shaders\StoreShadowDataShader.shader" />
+    <None Include="Assets\Aura\Shaders\Shaders\Surface\AuraStandardAlphaBlended.shader" />
     <None Include="Assets\LightTemperature\Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

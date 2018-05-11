@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/Usuario/Desktop/VJ_LaraCroftGo/LaraCroftGO/laea.exe
+C:/Users/borja/Desktop/VJ_LaraCroftGo/LaraCroftGO/lara.exe
 SceneListBegin?
 Assets/Scenes/Menu.unity
 Assets/Scenes/Map1.unity
@@ -163,3 +163,14 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 6ec97c9e3e9c0310e7a158ac14cc8e0e Assembly-CSharp.dll:.PlateController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MapController
+f736fe81dbaceec5eb4c33a277c4618f Assembly-CSharp.dll:AuraAPI.DebugFps
+a90e94673f50d2237c1b971c138660c6 Assembly-CSharp.dll:UnityStandardAssets.Utility.AutoMoveAndRotate
+0755eb262acc7898dacf5f8c29a5ca14 Assembly-CSharp.dll:.Fireball
+20ab4643c609a89fd69e893fad548559 Assembly-CSharp.dll:AuraAPI.AuraVolume
+7ed61642df6da73a8a4de3b0d91c93a6 Assembly-CSharp.dll:.MoveSinCos
+ffa1c8318b0577a489d1e295fd07191a Assembly-CSharp.dll:.SinRotationOffset
+4bd8774a5d6c8c8c3d76ebdbafb855dc Assembly-CSharp.dll:.LightFlicker
+1f50101508761e370dc5d685719eedb2 Assembly-CSharp.dll:.FreeCamera
+f0096128f613875d6945eec71f7787ef Assembly-CSharp.dll:AuraAPI.Aura
+c975c2d50a802d79cca0305bbbce7b45 Assembly-CSharp.dll:AuraAPI.GenerateComputeShaderKernelVariants
+baad9a4975be45a7be6b823915f40501 Assembly-CSharp.dll:AuraAPI.AuraLight
