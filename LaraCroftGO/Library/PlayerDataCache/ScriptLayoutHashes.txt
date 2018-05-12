@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/borja/Desktop/VJ_LaraCroftGo/LaraCroftGO/lara.exe
+C:/Users/Usuario/Desktop/VJ_LaraCroftGo/LaraCroftGO/lara.exe
 SceneListBegin?
 Assets/Scenes/Menu.unity
 Assets/Scenes/Map1.unity
@@ -17,6 +17,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 92d7a83ea3c7404e484f3b2eed421855 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 92d7a83ea3c7404e484f3b2eed421855 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
+f0096128f613875d6945eec71f7787ef Assembly-CSharp.dll:AuraAPI.Aura
 d0b3d333f980d6c595f369064e544beb Assembly-CSharp.dll:.SpiderController
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -96,6 +97,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 92d7a83ea3c7404e484f3b2eed421855 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 92d7a83ea3c7404e484f3b2eed421855 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
+20ab4643c609a89fd69e893fad548559 Assembly-CSharp.dll:AuraAPI.AuraVolume
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -111,8 +113,10 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+0755eb262acc7898dacf5f8c29a5ca14 Assembly-CSharp.dll:.Fireball
 322cb40e1e282f28af980cbef7922a90 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
+f736fe81dbaceec5eb4c33a277c4618f Assembly-CSharp.dll:AuraAPI.DebugFps
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -121,10 +125,13 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DetectLaraToableFloorMovment
 711c01794fcdf5de32477af19920adf5 Assembly-CSharp.dll:.LaraController
 d644b6d1335a6045354b7b97a1290e8f Assembly-CSharp.dll:.ObjectToMoveTilesController
+a90e94673f50d2237c1b971c138660c6 Assembly-CSharp.dll:UnityStandardAssets.Utility.AutoMoveAndRotate
 380c0ac76e6b006816d10002d40ec774 Assembly-CSharp.dll:.LizardController
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 8f515638ea4731ec1d86519e6c6224d3 Assembly-CSharp.dll:.LightTemperature
+ffa1c8318b0577a489d1e295fd07191a Assembly-CSharp.dll:.SinRotationOffset
+baad9a4975be45a7be6b823915f40501 Assembly-CSharp.dll:AuraAPI.AuraLight
 cb70dea97f3b0052152e4330b8d1a4b4 Assembly-CSharp.dll:.CameraController
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -155,6 +162,7 @@ e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 67a5f2c97205d2e41a8ed7c7ce898f6e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 67a5f2c97205d2e41a8ed7c7ce898f6e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
+7ed61642df6da73a8a4de3b0d91c93a6 Assembly-CSharp.dll:.MoveSinCos
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -162,15 +170,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 6ec97c9e3e9c0310e7a158ac14cc8e0e Assembly-CSharp.dll:.PlateController
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MapController
-f736fe81dbaceec5eb4c33a277c4618f Assembly-CSharp.dll:AuraAPI.DebugFps
-a90e94673f50d2237c1b971c138660c6 Assembly-CSharp.dll:UnityStandardAssets.Utility.AutoMoveAndRotate
-0755eb262acc7898dacf5f8c29a5ca14 Assembly-CSharp.dll:.Fireball
-20ab4643c609a89fd69e893fad548559 Assembly-CSharp.dll:AuraAPI.AuraVolume
-7ed61642df6da73a8a4de3b0d91c93a6 Assembly-CSharp.dll:.MoveSinCos
-ffa1c8318b0577a489d1e295fd07191a Assembly-CSharp.dll:.SinRotationOffset
-4bd8774a5d6c8c8c3d76ebdbafb855dc Assembly-CSharp.dll:.LightFlicker
 1f50101508761e370dc5d685719eedb2 Assembly-CSharp.dll:.FreeCamera
-f0096128f613875d6945eec71f7787ef Assembly-CSharp.dll:AuraAPI.Aura
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MapController
 c975c2d50a802d79cca0305bbbce7b45 Assembly-CSharp.dll:AuraAPI.GenerateComputeShaderKernelVariants
-baad9a4975be45a7be6b823915f40501 Assembly-CSharp.dll:AuraAPI.AuraLight
+4bd8774a5d6c8c8c3d76ebdbafb855dc Assembly-CSharp.dll:.LightFlicker

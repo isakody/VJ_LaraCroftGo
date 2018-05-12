@@ -438,4 +438,14 @@ public class LaraController : MonoBehaviour {
                 enemies[i].SendMessage("ParseLaraDirections", direction);
         }
     }
+
+    void hasWon(bool won)
+    {
+        if (won)
+        {
+            unsetAnimation();
+            anim.SetTrigger("hasWon");
+            transform.LookAt(transform.position - transform.forward);
+        }
+    }
 }
