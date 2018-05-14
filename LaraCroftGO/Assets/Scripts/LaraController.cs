@@ -16,6 +16,7 @@ public class LaraController : MonoBehaviour {
     public bool up;
     public bool down;
     bool moving = false;
+    public bool hasWon1= false;
     public bool isClimbingX = false;
     public bool isClimbingZ = false;
     bool rotating = false;
@@ -444,6 +445,7 @@ public class LaraController : MonoBehaviour {
     {
         if (won)
         {
+            hasWon1 =  true;
             unsetAnimation();
             anim.SetTrigger("hasWon");
             transform.LookAt(transform.position - transform.forward);
