@@ -35,6 +35,7 @@ public class LaraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log(transform.position);
         Debug.DrawRay(transform.position + Vector3.up * 0.5f, transform.forward, Color.yellow);
         if (Input.GetKey(KeyCode.W) && !moving)
         {    calculateRotation(KeyCode.W);
@@ -48,7 +49,7 @@ public class LaraController : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.S) && !moving)
         {
-            calculateRotation(KeyCode.W);
+            calculateRotation(KeyCode.S);
             if (CalculateDestiny(KeyCode.S))
             {
                
@@ -143,7 +144,7 @@ public class LaraController : MonoBehaviour {
             }
 
 
-            if (Mathf.Abs(Vector3.Distance(destiny, transform.position)) <= 0.01)
+            if (Mathf.Abs(Vector3.Distance(destiny, transform.position)) <= 0.001)
             {
                 
                 unsetAnimation();
