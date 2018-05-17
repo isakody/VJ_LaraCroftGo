@@ -143,6 +143,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
+d38aa59a6ca4150936c77da2141dd85c Assembly-CSharp.dll:.MapController1
 b7536247a550bc1596505b7f345c8adf Assembly-CSharp.dll:.GunAim
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DetectLaraToableFloorMovment
 b5453340f0512c0a1701f970a72cd3eb Assembly-CSharp.dll:.LaraController
@@ -210,6 +211,7 @@ f671a42aea5f34fec6a4450a3668c615 Assembly-CSharp.dll:UnityEngine.PostProcessing.
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 6ec97c9e3e9c0310e7a158ac14cc8e0e Assembly-CSharp.dll:.PlateController
 1f50101508761e370dc5d685719eedb2 Assembly-CSharp.dll:.FreeCamera
+9700686a5901a25f472e41cbb536a156 Assembly-CSharp.dll:.SawScript
 53dbd7baa3c8da2f87828dd70d70dae4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.DepthOfFieldDeprecated
 7fc3adfac7efbc0706567dbaca46f637 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.Fisheye
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.PostEffectsBase
@@ -218,4 +220,3 @@ b3432dfe180f02232d7612fb366593d3 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 3ae0dad0b55a80319e1d57c2dce28da7 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.Tonemapping
 c975c2d50a802d79cca0305bbbce7b45 Assembly-CSharp.dll:AuraAPI.GenerateComputeShaderKernelVariants
 4bd8774a5d6c8c8c3d76ebdbafb855dc Assembly-CSharp.dll:.LightFlicker
-d38aa59a6ca4150936c77da2141dd85c Assembly-CSharp.dll:.MapController1

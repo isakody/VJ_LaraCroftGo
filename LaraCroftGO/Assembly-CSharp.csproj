@@ -176,6 +176,7 @@
      <Compile Include="Assets\Scripts\MapController1.cs" />
      <Compile Include="Assets\Scripts\MenuSound.cs" />
      <Compile Include="Assets\Scripts\ObjectToMoveTilesController.cs" />
+     <Compile Include="Assets\Scripts\PendulumController.cs" />
      <Compile Include="Assets\Scripts\PlateController.cs" />
      <Compile Include="Assets\Scripts\SawScript.cs" />
      <Compile Include="Assets\Scripts\SnakeController.cs" />

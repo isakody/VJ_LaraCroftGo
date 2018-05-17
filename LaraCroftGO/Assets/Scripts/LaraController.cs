@@ -261,14 +261,6 @@ public class LaraController : MonoBehaviour {
                     return true;
                 }
             }
-            else if (down)
-            {
-                destiny = transform.position;
-                destiny.y -= 1;
-                t = 0;
-                updateAllEnemiesWithDirections("Down");
-                return true;
-            }
             else
             {
                 return false;

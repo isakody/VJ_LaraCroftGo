@@ -11,26 +11,49 @@ public class SpiderController : MonoBehaviour {
     public bool canGoWest;
     public bool canMove;
     bool isMooving = false;
+    bool isKilling = false;
     public float attackSeconds = 0.2f;
     float t;
+    GameObject objectToDestroy;
     Vector3 targetPosition;
+    Animator anim;
 
 	// Use this for initialization
 	void Start () {
+        anim = gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (canMove)
+        if (isKilling)
         {
-            CheckForKill();
-            if (!isMooving)
+            anim.SetTrigger("isKilling");
+            t += Time.deltaTime;
+            if (t > attackSeconds)
             {
-                CalculatePosition();
-                isMooving = true;
-                t = 0;
+                anim.ResetTrigger("isKilling");
+                MoveToTargetPosition();
+                isKilling = false;
+                Destroy(objectToDestroy);
             }
-            else MoveToTargetPosition();
+            
+        }
+        else
+        {
+
+
+            CheckForKill();
+            if (canMove)
+            {
+                if (!isMooving)
+                {
+                    anim.SetTrigger("isMoving");
+                    CalculatePosition();
+                    isMooving = true;
+                    t = 0;
+                }
+                else MoveToTargetPosition();
+            }
         }
 	}
 
@@ -112,6 +135,9 @@ public class SpiderController : MonoBehaviour {
             Debug.Log("final Postition");
             canMove = false;
             isMooving = false;
+            anim.ResetTrigger("isMoving");
+            anim.ResetTrigger("isKilling");
+            t = 0;
 
         }
         else
@@ -126,13 +152,16 @@ public class SpiderController : MonoBehaviour {
     {
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 1.0f))
+        if (Physics.Raycast(transform.position + Vector3.up*0.25f, transform.forward, out hit, 1.0f))
         {
             if (hit.collider.tag == "Lara")
             {
+
                 targetPosition = transform.position;
                 targetPosition += transform.forward;
-                Destroy(hit.collider.gameObject);
+                objectToDestroy = hit.collider.gameObject;
+                isKilling = true;
+                t = 0;
             }
         }
     }
