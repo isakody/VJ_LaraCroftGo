@@ -14,3 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map2.unity
     guid: e2419108f8231fe4d81de842fb52c41a
+  - enabled: 1
+    path: Assets/Scenes/Map3.unity
+    guid: b01161817d83a4d4e81569a82a2dc26f
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 09c5f112ca80c5c43a7c955b7752109c

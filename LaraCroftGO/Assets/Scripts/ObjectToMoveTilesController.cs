@@ -16,6 +16,8 @@ public class ObjectToMoveTilesController : MonoBehaviour {
     float currentLerpTime = 0;
     public float lerpTime = 1.0f;
     bool canChangeState = false;
+    public Animator leverAnim;
+    public GameObject audioSource;
 	void Start () {
         if (isDown)
         {
@@ -32,7 +34,7 @@ public class ObjectToMoveTilesController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (canChangeState)
+        if (canChangeState || isMoving)
         {
             if (isMoving)
             {
@@ -63,6 +65,8 @@ public class ObjectToMoveTilesController : MonoBehaviour {
                 targetPosition.y -= 5;
                 currentLerpTime = 0;
                 changeTileState();
+                leverAnim.ResetTrigger("isActivated");
+                audioSource.SendMessage("LeverPull");
             }
             else if (!isMoving)
             {
@@ -72,6 +76,8 @@ public class ObjectToMoveTilesController : MonoBehaviour {
                 targetPosition.y += 5;
                 currentLerpTime = 0;
                 changeTileState();
+                leverAnim.SetTrigger("isActivated");
+                audioSource.SendMessage("LeverPull");
             }
         }
     }

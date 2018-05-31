@@ -37,10 +37,12 @@ public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerExit(PointerEventData eventData)
     {
         isOver = false;
+        text.color = startColor;
     }
 
     public void ResetColor()
     {
         isOver = false;
+        text.color = startColor;
     }
 }

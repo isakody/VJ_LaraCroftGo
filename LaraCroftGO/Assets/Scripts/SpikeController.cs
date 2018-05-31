@@ -10,6 +10,7 @@ public class SpikeController : MonoBehaviour {
     Vector3 targetPosition;
     public float attackSeconds;
     float t = 0;
+    public GameObject audioSource;
 	// Use this for initialization
 	void Start () {
 		
@@ -24,6 +25,7 @@ public class SpikeController : MonoBehaviour {
     {
         if(this.activated != activated && !isMooving)
         {
+            audioSource.SendMessage("PlaySwordSwing");
             this.activated = activated;
             calculatePosition();
         }
@@ -64,6 +66,14 @@ public class SpikeController : MonoBehaviour {
     void OnCollisionEnter(Collision objectColiding)
     {
         Debug.Log("destroying");
-        Destroy(objectColiding.gameObject);
+        if (objectColiding.gameObject.tag == "Lara")
+        {
+            objectColiding.gameObject.SendMessage("die");
+        }
+        else
+        {
+            objectColiding.gameObject.SendMessage("die");
+        }
     }
+
 }

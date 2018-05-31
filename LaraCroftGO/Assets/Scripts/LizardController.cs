@@ -25,6 +25,12 @@ public class LizardController : MonoBehaviour {
     float t;
     Animator anim;
     Vector3 targetPosition;
+    public GameObject deathEffect;
+    bool isDead = false;
+    public GameObject exclamation;
+    bool renderExclamation = false;
+    float exclamationTime = 0;
+    public GameObject audioSource;
     // Use this for initialization
     void Start () {
         directions = new List<string>();
@@ -33,12 +39,44 @@ public class LizardController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.DrawRay(transform.position+Vector3.up*0.5f, transform.forward * 3, Color.red);
+        if (renderExclamation)
+        {
+            exclamation.SetActive(true);
+            exclamationTime += Time.deltaTime;
+            
+            if(exclamationTime > 2.5f)
+            {
+                exclamation.SetActive(false);
+                renderExclamation = false;
+                exclamationTime = 0;
+            }
+            else
+            {
+                Vector3 position = transform.position;
+                position.y = transform.position.y + 1.35f + 0.25f* Mathf.Sin(exclamationTime*4f);
+                exclamation.transform.position = position;
+                
+            }
+        }
+        if (isDead)
+        {
+            t += Time.deltaTime;
+            if (t > 2)
+            {
+                Destroy(this.gameObject);
+            }
+            return;
+        }
         if (canMove)
         {
             CheckForKill();
-            if (hasDetectedLara) followingLara = true;
-            if (followingLara)
+            if (hasDetectedLara && !followingLara)
+            {
+                followingLara = true;
+                this.canMove = false;
+                return;
+            }
+            else if (followingLara && canMove)
             {
                 if (!isMooving)
                 {
@@ -53,6 +91,8 @@ public class LizardController : MonoBehaviour {
                     MoveToTargetPosition();
                 }
             }
+            else if (canMove && !hasDetectedLara)
+                canMove = false;
         }
 	}
 
@@ -78,9 +118,10 @@ public class LizardController : MonoBehaviour {
         {
             if (hit.collider.tag == "Lara")
             {
+                audioSource.SendMessage("PlaySkeleton");
                 targetPosition = transform.position;
                 targetPosition += transform.forward;
-                Destroy(hit.collider.gameObject);
+                hit.collider.gameObject.SendMessage("die");
             }
         }
         
@@ -97,6 +138,10 @@ public class LizardController : MonoBehaviour {
                     directions.Add("Forward");
                     directions.Add("Forward");
                     hasDetectedLara = true;
+                    audioSource.SendMessage("PlayDetect");
+                    renderExclamation = true;
+                    exclamationTime = 0;
+                    followingLara = false;
                     canMove = false;
                 }
             }
@@ -105,7 +150,9 @@ public class LizardController : MonoBehaviour {
 
     void EnableMovement(bool canMove)
     {
-        this.canMove = canMove;
+        Debug.Log("im fucking moving bruh");
+        if(!this.canMove)
+            this.canMove = canMove;
     }
 
     void ParseLaraDirections(string direction)
@@ -118,6 +165,7 @@ public class LizardController : MonoBehaviour {
     {
         if (Mathf.Abs(Vector3.Distance(targetPosition, transform.position)) <= 0.01f)
         {
+            transform.position = targetPosition;
             Debug.Log("final Postition");
             canMove = false;
             isMooving = false;
@@ -240,4 +288,14 @@ public class LizardController : MonoBehaviour {
         else followingLara = false;
         
     }
+    void die()
+    {
+
+        Destroy(Instantiate(deathEffect, transform.position + Vector3.up * 0.25f, Quaternion.identity) as GameObject, 5.0f);
+        this.gameObject.SetActive(false);
+        t = 0;
+        isDead = true;
+
+    }
+
 }

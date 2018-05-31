@@ -38,13 +38,15 @@ public class SawScript : MonoBehaviour {
         }
         else
         {
-            if (transform.position != targetPosition)
+            if ((Mathf.Abs(Vector3.Distance(targetPosition, transform.position)) > 0.01))
             {
+                
                 t += Time.deltaTime / moveSpeed;
                 transform.position = Vector3.Lerp(transform.position, targetPosition, t);
             }
             else
             {
+                transform.position = targetPosition;
                 canMove = false;
                 isMoving = false;
             }
@@ -68,7 +70,11 @@ public class SawScript : MonoBehaviour {
     }
     void OnCollisionEnter(Collision objectColiding)
     {
-        if( objectColiding.gameObject.tag == "Lara" || objectColiding.gameObject.tag == "Enemie")
-            Destroy(objectColiding.gameObject);
+        if( objectColiding.gameObject.tag == "Lara" || objectColiding.gameObject.tag == "Enemy")
+        {
+          objectColiding.gameObject.SendMessage("die");
+           
+        }
+            
     }
 }

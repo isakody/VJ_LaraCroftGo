@@ -1,11 +1,14 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/Usuario/Desktop/VJ_LaraCroftGo/LaraCroftGO/lara.exe
+G:/LCG2/lara.exe
 SceneListBegin?
 Assets/Scenes/Menu.unity
 Assets/Scenes/Map1.unity
 Assets/Scenes/Map2.unity
+Assets/Scenes/Map3.unity
+Assets/Scenes/Credits.unity
 SceneListEnd?
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ReturnToMenu
 f62d1e12c4ea2e5d19ca5a2c81b0bf32 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.TiltShift
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 4b12dd839b2293f8457cd67cc3610b85 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -21,11 +24,13 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 c08b196716247885d3b27f7f282b2568 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ImageEffectBase
 a30beadf4d109f44144b9a9f42e61cbf Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.BlurOptimized
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LevelLoader
 23b50ef73e2c1a8a76860d35bcbbf8fc Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.GlobalFog
 daabd8d8800a87cff11f866c4d06a232 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ContrastStretch
 31ac2865258ddbc8f82525645ca875c2 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.VignetteAndChromaticAberration
 f0096128f613875d6945eec71f7787ef Assembly-CSharp.dll:AuraAPI.Aura
-d0b3d333f980d6c595f369064e544beb Assembly-CSharp.dll:.SpiderController
+a279512ed28dca9c7db2131de9c86c7d Assembly-CSharp.dll:.SpiderController
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ReturnMenu
 1ad999c1c59cc66b1257b3f9407287bc Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ColorCorrectionCurves
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -59,7 +64,7 @@ c63db43c730fa2cbb8ca07de15898cb6 UnityEngine.UI.dll:UnityEngine.UI.Toggle
 f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-57872fbf1b070b0d5821f1d099d2c7c7 Assembly-CSharp.dll:.SpikeController
+c59e2c8658f352aaf4352866f18230a0 Assembly-CSharp.dll:.SpikeController
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -143,14 +148,16 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-d38aa59a6ca4150936c77da2141dd85c Assembly-CSharp.dll:.MapController1
+c10179a8af07d7699344446215be0be8 Assembly-CSharp.dll:.MapController1
 b7536247a550bc1596505b7f345c8adf Assembly-CSharp.dll:.GunAim
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DetectLaraToableFloorMovment
-b5453340f0512c0a1701f970a72cd3eb Assembly-CSharp.dll:.LaraController
+43a80218c6575e9de867c56376d99ce1 Assembly-CSharp.dll:.LaraController
+763e66cb497e88695406d7cff5b6d40e Assembly-CSharp.dll:.ChestScript
 88e745da281bc889e248b64cf4d72a54 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.SunShafts
-d644b6d1335a6045354b7b97a1290e8f Assembly-CSharp.dll:.ObjectToMoveTilesController
+694b7da30abcfdf4b59f37429c80b6cb Assembly-CSharp.dll:.ObjectToMoveTilesController
+45299f1da68c52de7b748e9777fa03ee Assembly-CSharp.dll:.PendulumController
 a90e94673f50d2237c1b971c138660c6 Assembly-CSharp.dll:UnityStandardAssets.Utility.AutoMoveAndRotate
-380c0ac76e6b006816d10002d40ec774 Assembly-CSharp.dll:.LizardController
+464ae9619109c54af6015f3892a07f6d Assembly-CSharp.dll:.LizardController
 cac5093fb1baf037bd671ecbc6727828 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ScreenOverlay
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
@@ -179,7 +186,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 4aadab9e3e4d34f6e069833451e815bb Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.CreaseShading
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TileFinal
 e2b50e4e1e5006d87e7ebe8a724e8f6d Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ContrastEnhance
-ed6ff4f0f069ab08dae00a1ae73e5723 Assembly-CSharp.dll:.MenuSound
+8da942067511b35bb551ba9e99e7f277 Assembly-CSharp.dll:.MenuSound
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 96d0fbde9fd209878a0a291f82c9bcdd UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
@@ -187,7 +194,7 @@ ed6ff4f0f069ab08dae00a1ae73e5723 Assembly-CSharp.dll:.MenuSound
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 67a5f2c97205d2e41a8ed7c7ce898f6e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 67a5f2c97205d2e41a8ed7c7ce898f6e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
-939dd070e1d2f55705ce31c89539612c Assembly-CSharp.dll:.SnakeController
+eb24bd8a4b91c913ef29538d7b323dff Assembly-CSharp.dll:.SnakeController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MainMenu
 9e0ef5bf862444b5dc48b5a99554ce7c UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioListenerExtension
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
@@ -214,7 +221,9 @@ f671a42aea5f34fec6a4450a3668c615 Assembly-CSharp.dll:UnityEngine.PostProcessing.
 9700686a5901a25f472e41cbb536a156 Assembly-CSharp.dll:.SawScript
 53dbd7baa3c8da2f87828dd70d70dae4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.DepthOfFieldDeprecated
 7fc3adfac7efbc0706567dbaca46f637 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.Fisheye
+763e66cb497e88695406d7cff5b6d40e Assembly-CSharp.dll:.CollectableChestScript
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.PostEffectsBase
+ba42ac71d2668ed983e6da50e8bfcf20 Assembly-CSharp.dll:.SpecialEffectsScript
 e2a8fd4524fc2a3a236b7e7720b544a6 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.EdgeDetection
 b3432dfe180f02232d7612fb366593d3 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ColorCorrectionLookup
 3ae0dad0b55a80319e1d57c2dce28da7 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.Tonemapping

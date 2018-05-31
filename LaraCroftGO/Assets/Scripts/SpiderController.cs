@@ -17,6 +17,9 @@ public class SpiderController : MonoBehaviour {
     GameObject objectToDestroy;
     Vector3 targetPosition;
     Animator anim;
+    public GameObject deathEffect;
+    bool isDead = false;
+    public GameObject audioSource;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +28,15 @@ public class SpiderController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (isDead)
+        {
+            t += Time.deltaTime;
+            if (t > 2)
+            {
+                Destroy(this.gameObject);
+            }
+            return;
+        }
         if (isKilling)
         {
             anim.SetTrigger("isKilling");
@@ -34,7 +46,7 @@ public class SpiderController : MonoBehaviour {
                 anim.ResetTrigger("isKilling");
                 MoveToTargetPosition();
                 isKilling = false;
-                Destroy(objectToDestroy);
+                
             }
             
         }
@@ -65,6 +77,19 @@ public class SpiderController : MonoBehaviour {
         canGoSouth = objectColiding.gameObject.GetComponent<FloorTile>().canGoSouth;
         canGoEast = objectColiding.gameObject.GetComponent<FloorTile>().canGoEast;
         canGoWest = objectColiding.gameObject.GetComponent<FloorTile>().canGoWest;
+       
+    }
+    void OnCollisionEnter(Collision objectColiding)
+    {
+        Debug.Log("destroying");
+        if (objectColiding.gameObject.tag == "Lara")
+        {
+            objectColiding.gameObject.SendMessage("die");
+        }
+        else if(objectColiding.gameObject.tag == "Enemy")
+        {
+            objectColiding.gameObject.SendMessage("die");
+        }
     }
 
     void CalculatePosition()
@@ -142,7 +167,7 @@ public class SpiderController : MonoBehaviour {
         }
         else
         {
-            t += Time.deltaTime / attackSeconds;
+            t += Time.deltaTime / 0.2f;
             transform.position = Vector3.Lerp(transform.position, targetPosition, t);
 
         }
@@ -156,10 +181,10 @@ public class SpiderController : MonoBehaviour {
         {
             if (hit.collider.tag == "Lara")
             {
-
+                audioSource.SendMessage("PlaySpider");
                 targetPosition = transform.position;
                 targetPosition += transform.forward;
-                objectToDestroy = hit.collider.gameObject;
+                hit.collider.gameObject.SendMessage("die");
                 isKilling = true;
                 t = 0;
             }
@@ -169,5 +194,15 @@ public class SpiderController : MonoBehaviour {
     void EnableMovement(bool canMove)
     {
         this.canMove = canMove;
+    }
+
+    void die()
+    {
+
+        Destroy(Instantiate(deathEffect, transform.position + Vector3.up * 0.25f, Quaternion.identity) as GameObject, 5.0f);
+        this.gameObject.SetActive(false);
+        t = 0;
+        isDead = true;
+
     }
 }

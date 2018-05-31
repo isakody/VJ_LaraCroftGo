@@ -7,7 +7,8 @@ public class PendulumController : MonoBehaviour {
     public Vector3 axisOfRotation;
     int actualPosition = 2;
     bool goingForward = true;
-    public float movementTime = 0.2f;
+    public float movementTime = 0.1f;
+    public GameObject audioSource;
     
 
 	// Use this for initialization
@@ -81,7 +82,11 @@ public class PendulumController : MonoBehaviour {
     void OnCollisionEnter(Collision objectColiding)
     {
         if (objectColiding.gameObject.tag == "Lara" || objectColiding.gameObject.tag == "Enemie")
-            Destroy(objectColiding.gameObject);
+        {
+            audioSource.SendMessage("PlaySwordSwing");
+            objectColiding.gameObject.SendMessage("die");
+        }
+           
     }
 
 }

@@ -121,6 +121,7 @@
      <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
      <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
      <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
+     <Compile Include="Assets\LevelLoader.cs" />
      <Compile Include="Assets\LightTemperature\LightTemperature.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
@@ -166,8 +167,11 @@
      <Compile Include="Assets\PostProcessing\Runtime\Utils\GraphicsUtils.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
+     <Compile Include="Assets\ReturnToMenu.cs" />
      <Compile Include="Assets\Scripts\ButtonScript.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\ChestScript.cs" />
+     <Compile Include="Assets\Scripts\CollectableChestScript.cs" />
      <Compile Include="Assets\Scripts\DetectLaraToableFloorMovment.cs" />
      <Compile Include="Assets\Scripts\FloorTile.cs" />
      <Compile Include="Assets\Scripts\LaraController.cs" />
@@ -178,8 +182,10 @@
      <Compile Include="Assets\Scripts\ObjectToMoveTilesController.cs" />
      <Compile Include="Assets\Scripts\PendulumController.cs" />
      <Compile Include="Assets\Scripts\PlateController.cs" />
+     <Compile Include="Assets\Scripts\ReturnMenu.cs" />
      <Compile Include="Assets\Scripts\SawScript.cs" />
      <Compile Include="Assets\Scripts\SnakeController.cs" />
+     <Compile Include="Assets\Scripts\SpecialEffectsScript.cs" />
      <Compile Include="Assets\Scripts\SpiderController.cs" />
      <Compile Include="Assets\Scripts\SpikeController.cs" />
      <Compile Include="Assets\Scripts\TileFinal.cs" />

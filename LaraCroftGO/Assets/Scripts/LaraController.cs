@@ -15,7 +15,7 @@ public class LaraController : MonoBehaviour {
     public bool southDown;
     public bool up;
     public bool down;
-    bool moving = false;
+    public bool moving = false;
     public bool hasWon1= false;
     public bool isClimbingX = false;
     public bool isClimbingZ = false;
@@ -28,6 +28,13 @@ public class LaraController : MonoBehaviour {
     private bool isKilling;
     private GameObject enemyToKill;
     float timePassed = 0;
+    bool hasToGoDownEast = false;
+    bool hasToGoDownSouth = false;
+    bool canMoveClimbing = false;
+    bool hasDied = false;
+    bool hasDiedClimbing = false;
+    public GameObject audioSource;
+    private bool hasToDie = false;
 
     // Use this for initialization
     void Start () {
@@ -36,8 +43,29 @@ public class LaraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(transform.position);
-        Debug.DrawRay(transform.position + Vector3.up * 0.5f, transform.forward, Color.yellow);
+        if (hasWon1) return;
+        if (hasDied)
+        {
+            t += Time.deltaTime;
+            if (t > 2)
+            {
+                Destroy(this.gameObject);
+            }
+            else return;
+        }
+        else if (hasDiedClimbing)
+        {
+            t += Time.deltaTime;
+            if (t > 1.2f)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x,transform.position.y - 0.08f, transform.position.z);
+                return;
+            }
+        }
         if (Input.GetKey(KeyCode.W) && !moving)
         {    calculateRotation(KeyCode.W);
             if (CalculateDestiny(KeyCode.W))
@@ -110,6 +138,20 @@ public class LaraController : MonoBehaviour {
         
         if (!moving)
         {
+            if ((isClimbingZ || isClimbingX))
+            {
+               if(canMoveClimbing) checkForAnimation();
+            }
+            if (eastDown)
+            {
+                
+                hasToGoDownEast = true;
+            }
+            else if (southDown)
+            {
+                
+                hasToGoDownSouth = true;
+            }
             ResetDirections();
             moving = true;
         }
@@ -118,12 +160,24 @@ public class LaraController : MonoBehaviour {
             Vector3 targetPostition = new Vector3(destiny.x,
                                       this.transform.position.y,
                                       destiny.z);
+            if (hasToGoDownSouth && isClimbingZ)
+            {
+                targetPostition.z = targetPostition.z + 2;
+               
+            }
+            else if (hasToGoDownEast && isClimbingX)
+            {
+                targetPostition.x = targetPostition.x - 2;
+            }
+            
             Quaternion rotation = Quaternion.LookRotation(targetPostition - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed * 10);
             float diff = transform.rotation.eulerAngles.y - rotation.eulerAngles.y;
             if (Mathf.Abs(diff) <= 0.01f)
             {
                 rotating = false;
+                hasToGoDownEast = false;
+                hasToGoDownSouth = false;
                 checkForAnimation();
             }
         }
@@ -138,15 +192,25 @@ public class LaraController : MonoBehaviour {
                     anim.SetTrigger("isRunning");
                     timePassed = 0;
                 }
-               if(enemyToKill != null) Destroy(enemyToKill);
+                if (enemyToKill != null)
+                {
+                    enemyToKill.SendMessage("die");
+                    audioSource.SendMessage("PlayKickSound");
+                    enemyToKill = null;
+                }
                 
                
                 
             }
-
-
-            if (Mathf.Abs(Vector3.Distance(destiny, transform.position)) <= 0.001)
+            if (Mathf.Abs(Vector3.Distance(destiny, transform.position)) <= 0.01f)
             {
+                transform.position = destiny;
+                if (hasToDie)
+                {
+                    die();
+                    return;
+                }
+                
                 
                 unsetAnimation();
                 moving = false;
@@ -195,6 +259,7 @@ public class LaraController : MonoBehaviour {
                     destiny.y += 1;
                     t = 0;
                     isClimbingZ = false;
+                    anim.ResetTrigger("isClimbing");
                     updateAllEnemiesWithDirections("NorthUp");
                     return true;
                 }
@@ -214,6 +279,7 @@ public class LaraController : MonoBehaviour {
                 destiny = transform.position;
                 destiny.y += 1;
                 t = 0;
+                canMoveClimbing = true;
                 updateAllEnemiesWithDirections("Up");
                 return true;
             }
@@ -224,6 +290,7 @@ public class LaraController : MonoBehaviour {
                 destiny.z += 1;
                 t = 0;
                 updateAllEnemiesWithDirections("North");
+                if (isClimbingX) anim.SetTrigger("isMovingRight");
                 return true;
             }
             else return false;
@@ -237,6 +304,7 @@ public class LaraController : MonoBehaviour {
                 destiny.z -= 1;
                 t = 0;
                 updateAllEnemiesWithDirections("South");
+                if (isClimbingX) anim.SetTrigger("isMovingLeft");
                 return true;
             }
             else if (southDown)
@@ -247,6 +315,7 @@ public class LaraController : MonoBehaviour {
                     destiny.z -= 0.375f;
                     t = 0;
                     isClimbingZ = false;
+                    anim.ResetTrigger("isClimbing");
                     updateAllEnemiesWithDirections("SouthDown");
                     return true;
                 }
@@ -260,6 +329,15 @@ public class LaraController : MonoBehaviour {
                     updateAllEnemiesWithDirections("SouthDown");
                     return true;
                 }
+            }
+            else if (down && isClimbingZ)
+            {
+                destiny = transform.position;
+                destiny.y -= 1;
+                t = 0;
+                canMoveClimbing = true;
+                updateAllEnemiesWithDirections("Down");
+                return true;
             }
             else
             {
@@ -277,6 +355,7 @@ public class LaraController : MonoBehaviour {
                     destiny.x -= 0.625f;
                     destiny.y += 1.0f;
                     isClimbingX = false;
+                    anim.ResetTrigger("isClimbing");
                     t = 0;
                     updateAllEnemiesWithDirections("WestUp");
                     return true;
@@ -299,6 +378,7 @@ public class LaraController : MonoBehaviour {
                 destiny = transform.position;
                 destiny.y += 1;
                 t = 0;
+                canMoveClimbing = true;
                 updateAllEnemiesWithDirections("Up");
                 return true;
             }
@@ -308,6 +388,7 @@ public class LaraController : MonoBehaviour {
                 destiny.x -= 1;
                 t = 0;
                 updateAllEnemiesWithDirections("West");
+                if (isClimbingZ) anim.SetTrigger("isMovingLeft");
                 return true;
             }
             else return false;
@@ -315,15 +396,16 @@ public class LaraController : MonoBehaviour {
         if (key == KeyCode.D)
         {
             if (east == false && eastDown == false && down == false) return false;
-            else if (down)
+            else if (down && isClimbingX)
             {
                 destiny = transform.position;
                 destiny.y -= 1;
                 t = 0;
+                canMoveClimbing = true;
                 updateAllEnemiesWithDirections("Down");
                 return true;
             }
-            else if(eastDown == true)
+            else if (eastDown == true)
             {
                 if (!isClimbingX)
                 {
@@ -341,14 +423,15 @@ public class LaraController : MonoBehaviour {
                     destiny = transform.position;
                     destiny.x += 0.375f;
                     isClimbingX = false;
+                    anim.ResetTrigger("isClimbing");
                     t = 0;
                     updateAllEnemiesWithDirections("EastDown");
                     return true;
                 }
-                
-                
+
+
             }
-            else
+            else if (east)
             {
                 if (!isClimbingX)
                 {
@@ -356,19 +439,17 @@ public class LaraController : MonoBehaviour {
                     destiny.x += 1;
                     t = 0;
                     updateAllEnemiesWithDirections("East");
-                    return true;
-                }
-
-                else
-                {
-                    destiny = transform.position;
-                    destiny.z += 1;
-                    t = 0;
-                    updateAllEnemiesWithDirections("North");
+                    if (isClimbingZ) anim.SetTrigger("isMovingRight");
                     return true;
                 }
                 
+                else
+                {
+                    return false;
+                }
+
             }
+            else return false;
         }
         else return false;
 
@@ -376,12 +457,22 @@ public class LaraController : MonoBehaviour {
 
     void calculateRotation(KeyCode code)
     {
-        if (isClimbingX || isClimbingZ) rotating = false;
+        if (isClimbingX || isClimbingZ)
+        {
+            rotating = false;
+
+        }
         else rotating = true;
     }
     
     void checkForAnimation()
     {
+        if(isClimbingX || isClimbingZ)
+        {
+            if (canMoveClimbing) anim.SetTrigger("isMoving");
+            anim.SetTrigger("isClimbing");
+            
+        }
         
         if(!isClimbingX && !isClimbingZ)
         {
@@ -406,6 +497,13 @@ public class LaraController : MonoBehaviour {
 
     void unsetAnimation()
     {
+        if(isClimbingX || isClimbingZ)
+        {
+            anim.ResetTrigger("isMoving");
+            canMoveClimbing = false;
+            anim.ResetTrigger("isMovingRight");
+            anim.ResetTrigger("isMovingLeft");
+        }
         if (!isClimbingX && !isClimbingZ)
         {
             anim.ResetTrigger("isRunning");
@@ -442,5 +540,32 @@ public class LaraController : MonoBehaviour {
             anim.SetTrigger("hasWon");
             transform.LookAt(transform.position - transform.forward);
         }
+    }
+
+    void die()
+    {
+        if (transform.position != destiny && moving)
+        {
+            hasToDie = true;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
+        else
+        {
+            if (!isClimbingX && !isClimbingZ)
+            {
+                anim.SetTrigger("hasDied");
+                hasDied = true;
+                t = 0;
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+            }
+            else
+            {
+                anim.SetTrigger("hasDiedClimbing");
+                hasDiedClimbing = true;
+                t = 0;
+                //gameObject.GetComponent<BoxCollider>().enabled = false;
+            }
+        }
+        
     }
 }

@@ -11,6 +11,10 @@ public class SnakeController : MonoBehaviour
     bool isKilling = false;
     Vector3 targetPosition;
     Animator anim;
+    public GameObject deathEffect;
+    bool isDead = false;
+    public GameObject audioSource;
+
 
     // Use this for initialization
     void Start()
@@ -21,6 +25,15 @@ public class SnakeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDead)
+        {
+            t += Time.deltaTime;
+            if (t > 2)
+            {
+                Destroy(this.gameObject);
+            }
+            return;
+        }
 
         RaycastHit hit;
         if (!isMoving)
@@ -30,9 +43,11 @@ public class SnakeController : MonoBehaviour
             {
                 if (hit.collider.tag == "Lara")
                 {
+                    audioSource.SendMessage("PlaySnake");
                     targetPosition = transform.position;
                     targetPosition -= transform.forward;
                     objectToDestroy = hit.collider.gameObject;
+                    objectToDestroy.SendMessage("die");
                     isKilling = true;
                     t = 0;
                     isMoving = true;
@@ -56,12 +71,12 @@ public class SnakeController : MonoBehaviour
                 if (isKilling)
                 {
                     anim.SetTrigger("isKilling");
-                    if(t >= 0.3f)
+                    if(t >= 2f)
                     {
                         t = 0;
                         anim.ResetTrigger("isKilling");
                         isKilling = false;
-                        Destroy(objectToDestroy);
+                        
                     }
                 }
                 else
@@ -74,5 +89,14 @@ public class SnakeController : MonoBehaviour
             }
         }
         
+    }
+    void die()
+    {
+        
+        Destroy(Instantiate(deathEffect, transform.position + Vector3.up * 0.25f, Quaternion.identity) as GameObject, 5.0f);
+        this.gameObject.SetActive(false);
+        t = 0;
+        isDead = true;
+
     }
 }
