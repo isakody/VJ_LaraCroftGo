@@ -1,5 +1,5 @@
 # VJ_LaraCroftGo
-![Lara Croft](https://puu.sh/AA2D7/35a651a55b.png)
+![Lara Croft](https://i.imgur.com/UBMy0I0.png)
 
 ## By
 - Isabel Codina Garcia
